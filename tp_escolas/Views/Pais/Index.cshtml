@@ -1,0 +1,22 @@
+﻿@model tp_escolas.Models.Pai
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<div class="form-group">
+     @Html.Label("Bem vindo " + Model.Nome,htmlAttributes: new { @class = "control-label col-md-2" }) 
+    <div class="col-md-10">
+       
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.Label("Pertence a "+Model.Morada, htmlAttributes: new { @class = "control-label col-md-2" }) 
+    <div class="col-md-10">
+        
+    </div>
+</div>

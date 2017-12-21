@@ -1,0 +1,60 @@
+﻿@model tp_escolas.Models.Instituicao
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Info</h2>
+
+<div>
+    <h4>Instituicao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Morada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Morada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodPostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodPostal)
+        </dd>
+
+        <dt>
+            @Html.Label("Serviços ")
+        </dt>
+       @foreach (var item in Model.Servicos)
+       {
+         <dd>
+          @Html.Label("" + item.Descricao )
+        </dd>
+       }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar a lista", "ListaInstituicoes")
+</p>
