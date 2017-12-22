@@ -17,7 +17,6 @@ namespace tp_escolas.Controllers
 
         private EscolaContext _db;
         private ApplicationDbContext _UserDb;
-        private Pai _Listcidades;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         
@@ -26,7 +25,6 @@ namespace tp_escolas.Controllers
         {
             _db = new EscolaContext();
             _UserDb = new ApplicationDbContext();
-            _Listcidades = new Pai { Cidades = _db.Cidades.ToList() };
 
         }
         public PaisController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -77,7 +75,8 @@ namespace tp_escolas.Controllers
         //Get: Pais/Registo
         public ActionResult Registo()
         {
-            return View(_Listcidades);
+            ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
+            return View();
         }
 
         // GET: Pais/Details/5
@@ -97,17 +96,18 @@ namespace tp_escolas.Controllers
             try
             {
 
+                ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
 
 
                 if (_UserDb.Users.Any(y => y.Email == pai.Email))
                 {
                     ModelState.AddModelError("Email", "Conta já existente!");
 
-                    return View(_Listcidades);
+                    return View();
                 }
-                if (pai.Cidade.CidadeID.ToString() == "")
+                if (pai.Cidades.CidadeID.ToString() == "")
                 {
-                    return View(_Listcidades);
+                    return View();
                 }
 
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_UserDb));
@@ -130,6 +130,7 @@ namespace tp_escolas.Controllers
                     {
                         try
                         {
+                            pai.Cidades = _db.Cidades.FirstOrDefault(c => c.CidadeID == pai.Cidades.CidadeID);
                             pai.UserID = user.Id;
                             _db.Pais.Add(pai);
                             _db.SaveChanges();
@@ -155,19 +156,19 @@ namespace tp_escolas.Controllers
 
                                 }
                             } 
-                            return View(_Listcidades);
+                            return View();
                         }
 
                     }else
                          UserManager.Delete(user); //RollBack Role
                 }
                 AddErrors(result);
-                return View(_Listcidades);
+                return View();
 
             }
             catch
             {
-                return View(_Listcidades);
+                return View();
             }
         }
 

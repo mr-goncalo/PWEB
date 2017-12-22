@@ -34,7 +34,7 @@ namespace tp_escolas.Models
         [StringLength(300, MinimumLength = 10)]
         public string Morada { get; set; }
         [Required]
-        public Cidade Cidade { get; set; }
+        public Cidade Cidades { get; set; }
         [Required]
         [Display(Name = "Codigo Postal")]
         [RegularExpression(@"\d{4}(-\d{3})?$" , ErrorMessage = "Codigo Postal inválido")]
@@ -56,11 +56,7 @@ namespace tp_escolas.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-         
-        [NotMapped]
-        public List<Cidade> Cidades { get; set; }
-
+        
         public IList<Filho> Filhos { get; set; }
         public IList<Avaliacao> Avaliacoes { get; set; }
 

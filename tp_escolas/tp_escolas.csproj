@@ -178,6 +178,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712212332037_MudaNoma.cs" />
+    <Compile Include="Migrations\201712212332037_MudaNoma.Designer.cs">
+      <DependentUpon>201712212332037_MudaNoma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712212342124_MudaNoma1.cs" />
+    <Compile Include="Migrations\201712212342124_MudaNoma1.Designer.cs">
+      <DependentUpon>201712212342124_MudaNoma1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividade.cs" />
@@ -272,6 +280,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712212332037_MudaNoma.resx">
+      <DependentUpon>201712212332037_MudaNoma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712212342124_MudaNoma1.resx">
+      <DependentUpon>201712212342124_MudaNoma1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
