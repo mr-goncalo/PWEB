@@ -197,14 +197,18 @@
     <Compile Include="Models\InstituicaoServico.cs" />
     <Compile Include="Models\InstituicaoTipoEnsino.cs" />
     <Compile Include="Models\InstituicaoTipoEnsinoServico.cs" />
+    <Compile Include="Models\ViewModels\InstituicaoViewModelAdd.cs" />
     <Compile Include="Models\Pai.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\FilhoInscrito.cs" />
     <Compile Include="Models\PaiInstituicao.cs" />
+    <Compile Include="Models\RolesConst.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Models\TipoEnsino.cs" />
     <Compile Include="Models\TipoInstituicao.cs" />
+    <Compile Include="Models\ViewModels\InstituicaoViewModelEdit.cs" />
+    <Compile Include="Models\ViewModels\TipoEnsinoServicoViewModelAE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ValidationAttributes\MinPalavrasAttribute.cs" />
@@ -269,6 +273,10 @@
     <Content Include="Views\Instituicao\Registo.cshtml" />
     <Content Include="Views\Instituicao\ListaInstituicoes.cshtml" />
     <Content Include="Views\Instituicao\Info.cshtml" />
+    <Content Include="Views\Instituicao\Index.cshtml" />
+    <Content Include="Views\Instituicao\Edit.cshtml" />
+    <Content Include="Views\Instituicao\ServicosLista.cshtml" />
+    <Content Include="Views\Instituicao\ServEnsino.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Instituições</h2>
+<div style="margin:20px;">
+    <div style="padding:10px;">
+       
+            @Html.ActionLink("Editar Informação Geral", "Edit",new { id = @ViewBag.Id }, null) 
+            <br />  
+            @Html.ActionLink("Adicionar / Editar Serviços Especificos","ServicosLista", new { id = @ViewBag.Id }, null) <br /> 2h 
+            @Html.ActionLink("Aceitar Pais", "") <br /> 2h
+            @Html.ActionLink("Criar Actividade", "") <br /> 2h 
+            @Html.ActionLink("Editar Actividade", "") <br /> 2h
+            @Html.ActionLink("Vizualizar Avaliação ", "") <br /> 1.5h
+         
+    </div>
+</div>

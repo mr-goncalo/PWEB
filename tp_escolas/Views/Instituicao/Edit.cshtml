@@ -1,36 +1,20 @@
-﻿@model tp_escolas.Models.ViewModels.InstituicaoViewModelAdd
+﻿@model tp_escolas.Models.ViewModels.InstituicaoViewModelEdit
 
 @{
-    ViewBag.Title = "Registo";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Registo</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Instituicao</h4>
+        <h4>InstituicaoViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" }) 
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -84,19 +68,19 @@
             @Html.ValidationMessage("TiposEnsino")
             <div class="col-md-10">
                 <div style="max-height:200px;width:450px;overflow:scroll">
-                    <table >
+                    <table>
                         @for (int i = 0; i < Model.TiposEnsino.Count; i++)
                         {
                             <tr>
                                 <td>
                                     @Html.HiddenFor(model => model.TiposEnsino[i].TipoEnsinoID)
-                                    @Html.CheckBoxFor(model => model.TiposEnsino[i].IsSelected  )
+                                    @Html.CheckBoxFor(model => model.TiposEnsino[i].IsSelected)
                                 </td>
                                 <td>
                                     @Html.HiddenFor(model => model.TiposEnsino[i].Descricao)
                                     @Html.LabelFor(model => model.TiposEnsino[i].Descricao, Model.TiposEnsino[i].Descricao)
                                 </td>
-                                <td style="padding-left:1.5em;"  >
+                                <td style="padding-left:1.5em;">
                                     @Html.Label("Valor ")
                                     @Html.EditorFor(model => model.TiposEnsino[i].Valor)
                                 </td>
@@ -132,7 +116,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Registo" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -141,4 +125,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
- 

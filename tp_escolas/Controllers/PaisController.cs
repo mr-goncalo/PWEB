@@ -60,11 +60,11 @@ namespace tp_escolas.Controllers
         // GET: Pais
         public ActionResult Index()
         {
-            Pai p = new Pai();
+          Pai p = new Pai();
            if(User.Identity.IsAuthenticated)
             {
                 
-                 string uId = User.Identity.GetUserId(); 
+               string uId = User.Identity.GetUserId(); 
                 p.Nome = _db.Pais.Where(u => u.UserID == uId).Select(u => u.Nome).FirstOrDefault().ToString();
                 if (Roles.IsUserInRole("Pais"))
                     p.Morada = "Pais";
@@ -117,14 +117,14 @@ namespace tp_escolas.Controllers
                 if (result.Succeeded)
                 {
 
-                    if (!roleManager.RoleExists("Pais"))
+                    if (!roleManager.RoleExists(RolesConst.Pai))
                     {
                         var role = new IdentityRole(); 
-                        role.Name = "Pais";
+                        role.Name = RolesConst.Pai;
                         roleManager.Create(role);
                     }
 
-                    result = UserManager.AddToRole(user.Id, "Pais");
+                    result = UserManager.AddToRole(user.Id, RolesConst.Pai);
 
                     if (result.Succeeded)
                     {
@@ -141,7 +141,7 @@ namespace tp_escolas.Controllers
                         catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
                         {
                             //RollBack 
-                            UserManager.RemoveFromRole(user.Id, "Pais");
+                            UserManager.RemoveFromRole(user.Id, RolesConst.Pai);
                             result = UserManager.Delete(user); 
                             foreach (var validationErrors in dbEx.EntityValidationErrors)
                             {

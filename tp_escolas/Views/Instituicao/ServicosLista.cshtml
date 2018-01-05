@@ -1,0 +1,32 @@
+﻿@model IEnumerable<tp_escolas.Models.TipoEnsino>
+@{
+    ViewBag.Title = "ServicosLista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ServicosLista</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th> 
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.IsSelected)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td> 
+                <td>
+                    @Html.ActionLink("Adicionar/Editar", "ServEnsino", new { id = item.TipoEnsinoID })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+

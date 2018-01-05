@@ -6,16 +6,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using tp_escolas.ValidationAttributes;
 
-namespace tp_escolas.Models
+namespace tp_escolas.Models.ViewModels
 {
-    [Table("Instituicoes")]
-    public class Instituicao  
+    public class InstituicaoViewModelEdit
     {
-       
-        [Key]
-        [ScaffoldColumn(false)]
-        public int InstituicaoID { get; set; }
-
+         
         [Required]
         [MinPalavras(2, ErrorMessage = "Nome demasiado pequeno! ")]
         [MaxLength(120)]
@@ -23,7 +18,7 @@ namespace tp_escolas.Models
         public string Nome { get; set; }
 
         [Required]
-        [StringLength(200,MinimumLength = 10, ErrorMessage = "Morada demasiado pequena!")]
+        [StringLength(200, MinimumLength = 10, ErrorMessage = "Morada demasiado pequena!")]
         public string Morada { get; set; }
 
         [Required]
@@ -39,21 +34,11 @@ namespace tp_escolas.Models
         [RegularExpression(@"\d{4}(-\d{3})?$", ErrorMessage = "Codigo Postal inválido")]
         public string CodPostal { get; set; }
 
-        [ScaffoldColumn(false)]
-        public bool Activa { get; set; }
-        [ScaffoldColumn(false)]
-        public string UserID { get; set; }
-        
         [Required]
-        public TipoInstituicao TipoInstituicao { get; set; } 
-         
+        public TipoInstituicao TipoInstituicao { get; set; }
 
-        public IList<Actividade> Actividades { get; set; } 
-        public IList<InstituicaoServico> InstituicoesServicos { get; set; }
-        public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
-        public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
-        public IList<Avaliacao> Avaliacoes { get; set; }
-        public IList<FilhoInscrito> FilhosInscritos { get; set; }
-
+        public List<Cidade> Cidades { get; set; }
+        public List<Servico> Servicos { get; set; }
+        public List<TipoEnsino> TiposEnsino { get; set; }
     }
 }
