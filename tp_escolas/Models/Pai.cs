@@ -57,9 +57,8 @@ namespace tp_escolas.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
         
-        public IList<Filho> Filhos { get; set; }
         public IList<Avaliacao> Avaliacoes { get; set; }
-
+        public IList<PaiInstituicao> PaiInstituição { get; set; }
         
     }
 }

@@ -178,13 +178,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712212332037_MudaNoma.cs" />
-    <Compile Include="Migrations\201712212332037_MudaNoma.Designer.cs">
-      <DependentUpon>201712212332037_MudaNoma.cs</DependentUpon>
+    <Compile Include="Migrations\201801050443102_final.cs" />
+    <Compile Include="Migrations\201801050443102_final.Designer.cs">
+      <DependentUpon>201801050443102_final.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712212342124_MudaNoma1.cs" />
-    <Compile Include="Migrations\201712212342124_MudaNoma1.Designer.cs">
-      <DependentUpon>201712212342124_MudaNoma1.cs</DependentUpon>
+    <Compile Include="Migrations\201801050517320_finalV2.cs" />
+    <Compile Include="Migrations\201801050517320_finalV2.Designer.cs">
+      <DependentUpon>201801050517320_finalV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801050528567_finalV21.cs" />
+    <Compile Include="Migrations\201801050528567_finalV21.Designer.cs">
+      <DependentUpon>201801050528567_finalV21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801050529409_finalV22.cs" />
+    <Compile Include="Migrations\201801050529409_finalV22.Designer.cs">
+      <DependentUpon>201801050529409_finalV22.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -192,7 +200,6 @@
     <Compile Include="Models\Avaliacao.cs" />
     <Compile Include="Models\Cidade.cs" />
     <Compile Include="Models\EscolaContext.cs" />
-    <Compile Include="Models\Filho.cs" />
     <Compile Include="Models\Instituicao.cs" />
     <Compile Include="Models\InstituicaoServico.cs" />
     <Compile Include="Models\InstituicaoTipoEnsino.cs" />
@@ -201,7 +208,6 @@
     <Compile Include="Models\Pai.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\FilhoInscrito.cs" />
     <Compile Include="Models\PaiInstituicao.cs" />
     <Compile Include="Models\RolesConst.cs" />
     <Compile Include="Models\Servico.cs" />
@@ -277,6 +283,11 @@
     <Content Include="Views\Instituicao\Edit.cshtml" />
     <Content Include="Views\Instituicao\ServicosLista.cshtml" />
     <Content Include="Views\Instituicao\ServEnsino.cshtml" />
+    <Content Include="Views\Instituicao\ListaPais.cshtml" />
+    <Content Include="Views\Instituicao\CriarActividade.cshtml" />
+    <Content Include="Views\Instituicao\ListaAct.cshtml" />
+    <Content Include="Views\Instituicao\ActividadeEdit.cshtml" />
+    <Content Include="Views\Instituicao\ActividadeDel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,11 +301,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712212332037_MudaNoma.resx">
-      <DependentUpon>201712212332037_MudaNoma.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801050443102_final.resx">
+      <DependentUpon>201801050443102_final.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712212342124_MudaNoma1.resx">
-      <DependentUpon>201712212342124_MudaNoma1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801050517320_finalV2.resx">
+      <DependentUpon>201801050517320_finalV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801050528567_finalV21.resx">
+      <DependentUpon>201801050528567_finalV21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801050529409_finalV22.resx">
+      <DependentUpon>201801050529409_finalV22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

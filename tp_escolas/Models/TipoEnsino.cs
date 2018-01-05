@@ -22,7 +22,6 @@ namespace tp_escolas.Models
 
         public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
         public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
-        public IList<FilhoInscrito> FilhosInscritos { get; set; }
 
     }
 }

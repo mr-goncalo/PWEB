@@ -12,10 +12,22 @@ namespace tp_escolas.Models
     {
         [Key]
         public int ActividadeID { get; set; }
+        [Required]
+        [MinLength(10)]
         public string Descricao { get; set; } 
+
         public Instituicao Instituicao { get; set; }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Data De Inicio")]
+        [DataType(DataType.Date)]
         public DateTime DataInicio { get; set; }
-        public DateTime? DataTermino { get; set; }
+        [Required]
+        [DisplayFormat( ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "Date de Termino")]
+        [DataType(DataType.Date)]
+        public DateTime  DataTermino { get; set; }
           
 
     }

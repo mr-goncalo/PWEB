@@ -10,11 +10,10 @@
        
             @Html.ActionLink("Editar Informação Geral", "Edit",new { id = @ViewBag.Id }, null) 
             <br />  
-            @Html.ActionLink("Adicionar / Editar Serviços Especificos","ServicosLista", new { id = @ViewBag.Id }, null) <br /> 2h 
-            @Html.ActionLink("Aceitar Pais", "") <br /> 2h
-            @Html.ActionLink("Criar Actividade", "") <br /> 2h 
-            @Html.ActionLink("Editar Actividade", "") <br /> 2h
-            @Html.ActionLink("Vizualizar Avaliação ", "") <br /> 1.5h
-         
+            @Html.ActionLink("Adicionar / Editar Serviços Especificos","ServicosLista", new { id = @ViewBag.Id }, null) <br />  
+            @Html.ActionLink("Aceitar Pais", "ListaPais", new { idIns = @ViewBag.Id }, null) <br />  
+            @Html.ActionLink("Criar Actividade", "CriarActividade") <br />  
+            @Html.ActionLink("Ver Actividades", "ListaAct", new { id = @ViewBag.Id }, null) <br />  
+            @Html.ActionLink("Vizualizar Avaliação ", "") <br />  
     </div>
 </div>

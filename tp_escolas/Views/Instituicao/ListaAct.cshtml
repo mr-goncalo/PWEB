@@ -1,0 +1,45 @@
+﻿@model IEnumerable<tp_escolas.Models.Actividade>
+
+@{
+    ViewBag.Title = "ListaAct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListaAct</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataTermino)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataTermino)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "ActividadeEdit", new { id=item.ActividadeID }) | 
+            @Html.ActionLink("Apagar", "ActividadeDel", new { id=item.ActividadeID })
+        </td>
+    </tr>
+}
+
+</table>

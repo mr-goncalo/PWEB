@@ -14,12 +14,10 @@ namespace tp_escolas.Models
         public int PaisID { get; set; }
         [Key, Column(Order = 1), ForeignKey("Instituicoes")]
         public int InstituicoesID { get; set; }
-        [Key, Column(Order = 2), ForeignKey("Filhos")]
-        public int FilhosID { get; set; }
+      
 
         public Pai Pais { get; set; }
         public Instituicao Instituicoes { get; set; }
-        public Filho Filhos { get; set; }
         public string Descricao { get; set; }
 
         public int nota { get; set; }

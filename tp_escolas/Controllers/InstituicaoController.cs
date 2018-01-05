@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using tp_escolas.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using tp_escolas.Models.ViewModels;
+using System.Globalization;
+
 namespace tp_escolas.Controllers
 {
     [Authorize(Roles = RolesConst.Instituicao)]
@@ -237,7 +239,7 @@ namespace tp_escolas.Controllers
         {
             if (id == null || id <= 0)
                 return RedirectToAction("Index");
-             
+
             Instituicao inst = new Instituicao();
             InstituicaoViewModelEdit IVm = new InstituicaoViewModelEdit();
             inst = _db.Instituicoes.Where(x => x.InstituicaoID == id).FirstOrDefault();
@@ -247,10 +249,10 @@ namespace tp_escolas.Controllers
 
 
             var ServicosSub = _db.Servicos.Where(w => w.InstituicoesServicos.Any(s => s.ServicosID == w.ServicosID && s.InstituicoesID == id)).ToList();
-            IVm.Servicos = _db.Servicos.ToList() ;
+            IVm.Servicos = _db.Servicos.ToList();
             IVm.Cidades = _db.Cidades.ToList();
 
-            foreach( var serv in ServicosSub)
+            foreach (var serv in ServicosSub)
             {
                 IVm.Servicos.Where(w => w.ServicosID == serv.ServicosID)
                     .Select(s => { s.IsSelected = true; return s; }).ToList();
@@ -259,37 +261,37 @@ namespace tp_escolas.Controllers
             foreach (var serv in TiposEnsinoSub)
             {
                 IVm.TiposEnsino.Where(w => w.TipoEnsinoID == serv.TipoEnsinoID)
-                    .Select(s => { s.IsSelected = true;s.Valor = serv.Valor; return s; }).ToList();
+                    .Select(s => { s.IsSelected = true; s.Valor = serv.Valor; return s; }).ToList();
             }
-           
+
             IVm.Nome = inst.Nome;
             IVm.Cidade = inst.Cidade;
             IVm.Morada = inst.Morada;
             IVm.CodPostal = inst.CodPostal;
             IVm.Telefone = inst.Telefone;
             IVm.TipoInstituicao = inst.TipoInstituicao;
-          
+
             return View(IVm);
         }
 
         // POST: Instituicao/Edit/5
         [HttpPost]
         public ActionResult Edit(InstituicaoViewModelEdit i)
-        { 
+        {
             try
             {
                 i.Cidades = _db.Cidades.ToList();
-                
+
 
                 if (ModelState.IsValid)
                 {
 
-                    var UserID = User.Identity.GetUserId(); 
+                    var UserID = User.Identity.GetUserId();
                     var InstituicaoID = Convert.ToInt16(_db.Instituicoes.Where(w => w.UserID == UserID).Select(se => se.InstituicaoID).FirstOrDefault());
                     i.Cidade = _db.Cidades.FirstOrDefault(c => c.CidadeID == i.Cidade.CidadeID);
 
                     var inst = _db.Instituicoes.Find(InstituicaoID);
- 
+
                     inst.Morada = i.Morada;
                     inst.Nome = i.Nome;
                     inst.Telefone = i.Telefone;
@@ -327,22 +329,22 @@ namespace tp_escolas.Controllers
                             instTEnsi.Valor = it.Valor;
                             _db.InstituicaoTipoEnsino.Add(instTEnsi);
                         }
-                    } 
+                    }
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                return View( );
+                return View();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-                 foreach (var validationErrors in dbEx.EntityValidationErrors)
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
                         ModelState.AddModelError("", "\n" + string.Format("{0}:{1}",
                             validationErrors.Entry.Entity.ToString(),
                             validationError.ErrorMessage));
-                         
+
 
                     }
                 }
@@ -351,8 +353,8 @@ namespace tp_escolas.Controllers
             catch (Exception e)
             {
                 return View(i);
-            } 
-           
+            }
+
         }
 
         // GET: Instituicao/Delete/5
@@ -384,22 +386,22 @@ namespace tp_escolas.Controllers
                 ModelState.AddModelError("", error);
             }
         }
-         
+
         public ActionResult ServicosLista(int? id)
         {
             if (id == null || id <= 0)
                 return RedirectToAction("Index");
 
             InstituicaoViewModelEdit IVm = new InstituicaoViewModelEdit();
-            
-             
+
+
             var TiposEnsinoSub = _db.InstituicaoTipoEnsino.Where(w => w.InstituicoesID == id).ToList();
             var TiposEnsino = _db.TipoEnsino.ToList();
 
             foreach (var serv in TiposEnsinoSub)
             {
-                 TiposEnsino.Where(w => w.TipoEnsinoID == serv.TipoEnsinoID)
-                    .Select(s => { s.IsSelected = true; s.Valor = serv.Valor; return s; }).ToList();
+                TiposEnsino.Where(w => w.TipoEnsinoID == serv.TipoEnsinoID)
+                   .Select(s => { s.IsSelected = true; s.Valor = serv.Valor; return s; }).ToList();
             }
 
             return View(TiposEnsino);
@@ -407,7 +409,7 @@ namespace tp_escolas.Controllers
 
         public ActionResult ServEnsino(int? id)
         {
-            if(id == null || id <= 0)
+            if (id == null || id <= 0)
             {
                 return RedirectToAction("Index");
             }
@@ -424,12 +426,12 @@ namespace tp_escolas.Controllers
             var InstituicaoID = Convert.ToInt16(_db.Instituicoes.Where(w => w.UserID == UserID).Select(se => se.InstituicaoID).FirstOrDefault());
 
             var ServicosSub = _db.Servicos.Where(w => w.InstituicoesTipoEnsinoServicos.Any(s => s.ServicosID == w.ServicosID && s.InstituicoesID == InstituicaoID && s.TipoEnsinoID == id)).ToList();
-            tae.Servicos = _db.Servicos.ToList(); 
+            tae.Servicos = _db.Servicos.ToList();
 
             foreach (var serv in ServicosSub)
             {
-              tae.Servicos.Where(w => w.ServicosID == serv.ServicosID)
-                    .Select(s => { s.IsSelected = true; return s; }).ToList();
+                tae.Servicos.Where(w => w.ServicosID == serv.ServicosID)
+                      .Select(s => { s.IsSelected = true; return s; }).ToList();
             }
             return View(tae);
         }
@@ -438,7 +440,7 @@ namespace tp_escolas.Controllers
         {
             try
             {
-                var UserID = User.Identity.GetUserId(); 
+                var UserID = User.Identity.GetUserId();
                 var InstituicaoID = Convert.ToInt16(_db.Instituicoes.Where(w => w.UserID == UserID).Select(se => se.InstituicaoID).FirstOrDefault());
 
                 var lstServ = _db.InstituicoesTipoEnsinoServicos.Where(w => w.InstituicoesID == InstituicaoID && w.TipoEnsinoID == tae.TipoEnsinoID);
@@ -479,6 +481,134 @@ namespace tp_escolas.Controllers
             {
                 return View(tae);
             }
+        }
+
+        public ActionResult ListaPais(int? idIns, int? idPai)
+        {
+            if (idIns == null || idIns <= 0)
+                return RedirectToAction("Index");
+
+            ViewBag.IdIns = idIns;
+
+            if (idPai == null)
+                return View(_db.Pais.Where(w => w.PaiInstituição.Any(a => a.InstituicoesID == idIns && a.Activo == false)).ToList());
+            else
+            {
+
+                try
+                {
+                    var paiIns = _db.PaisInstituiçoes.Find(idPai, idIns);
+                    paiIns.Activo = true;
+                    _db.SaveChanges();
+                    return View(_db.Pais.Where(w => w.PaiInstituição.Any(a => a.InstituicoesID == idIns && a.Activo == false)).ToList());
+                }
+                catch
+                {
+                    return View(_db.Pais.Where(w => w.PaiInstituição.Any(a => a.InstituicoesID == idIns && a.Activo == false)).ToList());
+
+                }
+
+            }
+        }
+        public ActionResult CriarActividade()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CriarActividade(Actividade act)
+        {
+            try
+            {
+                if (act.DataInicio < DateTime.Now)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser maior que a Data de hoje!");
+                if (act.DataInicio > act.DataTermino)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser menor que a Data de Termino!");
+
+                if (ModelState.IsValid)
+                {
+                    var UserId = User.Identity.GetUserId();
+                    act.Instituicao = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == UserId);
+
+                    _db.Actividades.Add(act);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult ListaAct(int? id)
+        {
+            if (id == null || id <= 0)
+                return RedirectToAction("Index");
+
+            return View(_db.Actividades.Where(w => w.DataTermino >= DateTime.Now).ToList());
+        }
+        public ActionResult ActividadeEdit(int? id)
+        {
+            if (id == null || id <= 0)
+                return RedirectToAction("ListaAct");
+            var act = _db.Actividades.Find(id);
+            
+            return View(act);
+        }
+        [HttpPost]
+        public ActionResult ActividadeEdit(Actividade act)
+        {
+
+            try
+            {
+                if (act.DataInicio < DateTime.Now)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser maior que a Data de hoje!");
+                if (act.DataInicio > act.DataTermino)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser menor que a Data de Termino!");
+
+                if (ModelState.IsValid)
+                {
+                    var UserId = User.Identity.GetUserId();
+                    act.Instituicao = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == UserId);
+                    var actEdit = _db.Actividades.Find(act.ActividadeID);
+
+                    actEdit.DataInicio = act.DataInicio;
+                    actEdit.DataTermino = act.DataTermino;
+                    actEdit.Descricao = act.Descricao;
+                    actEdit.Instituicao = act.Instituicao;
+
+                    _db.SaveChanges();
+                    return RedirectToAction("ListaAct");
+                }
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult ActividadeDel(int? id)
+        {
+            if (id == null || id <= 0)
+                return RedirectToAction("ListaAct");
+            
+            return View(_db.Actividades.Find(id));
+        }
+        [HttpPost]
+        public ActionResult ActividadeDel(Actividade act)
+        { 
+            try
+            {
+                 _db.Actividades.Remove(_db.Actividades.Find(act.ActividadeID));
+                _db.SaveChanges();
+                return RedirectToAction("ListaAct");
+            }
+            catch
+            {
+                return RedirectToAction("ListaAct");
+            }
+            
         }
     }
 

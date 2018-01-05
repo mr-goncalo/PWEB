@@ -17,7 +17,7 @@ namespace tp_escolas.Models
 
         public Instituicao Instituicoes { get; set; }
         public Servico Servicos { get; set; }
-        public double Valor { get; set; }
+        
 
     }
 }

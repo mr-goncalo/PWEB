@@ -7,13 +7,13 @@ namespace tp_escolas.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MudaNoma1 : IMigrationMetadata
+    public sealed partial class finalV22 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MudaNoma1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(finalV22));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712212342124_MudaNoma1"; }
+            get { return "201801050529409_finalV22"; }
         }
         
         string IMigrationMetadata.Source
