@@ -1,4 +1,4 @@
-﻿@model tp_escolas.Models.Instituicao
+﻿@model tp_escolas.Models.ViewModels.InstituicaoViewModel
 
 @{
     ViewBag.Title = "Info";
@@ -11,7 +11,7 @@
     <h4>Instituicao</h4>
     <hr />
     <dl class="dl-horizontal">
-       
+
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
@@ -45,15 +45,37 @@
         </dd>
 
         <dt>
-            @Html.Label("Serviços ")
+            @Html.Label("Serviços Gerais ")
         </dt>
-       @foreach (var item in Model.Servicos)
-       {
-         <dd>
-          @Html.Label("" + item.Descricao )
-        </dd>
-       }
+        @foreach (var item in Model.Servicos)
+        {
+            <dd>
+                @Html.DisplayName("" + item.Descricao)
+            </dd>
+        }
+
+        <dt>
+            @Html.Label("Tipos de ensino")
+        </dt>
+        <dd></dd>
+        @foreach (var it in Model.TiposEnsino)
+        {
+            <dt>
+                @Html.Label(it.Descricao)
+            </dt>
+            foreach (var serv in Model.Ites)
+            {
+                if (serv.TipoEnsino.TipoEnsinoID == it.TipoEnsinoID)
+                {
+                    <dd>
+                        @Html.DisplayName(serv.Servicos.Descricao)
+                    </dd>
+                }
+            }
+        }
+
     </dl>
+
 </div>
 <p>
     @Html.ActionLink("Voltar a lista", "ListaInstituicoes")

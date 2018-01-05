@@ -1,0 +1,38 @@
+﻿@model IEnumerable<tp_escolas.Models.Avaliacao>
+
+@{
+    ViewBag.Title = "Avaliacoes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Avaliacoes</h2>
+ 
+<table class="table">
+    <tr> 
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+     
+    </tr>
+
+@foreach (var item in Model) {
+    <tr> 
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td> 
+    </tr>
+}
+
+</table>

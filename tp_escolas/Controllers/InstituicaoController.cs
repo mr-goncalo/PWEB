@@ -93,12 +93,29 @@ namespace tp_escolas.Controllers
         {
             if (id == null || id == 0)
                 return RedirectToAction("ListaInstituicoes");
-            Instituicao inst = new Instituicao();
-            inst = _db.Instituicoes.Where(x => x.InstituicaoID == id).FirstOrDefault();
-            /*
+            InstituicaoViewModel inst = new InstituicaoViewModel();
+            var i = _db.Instituicoes.Where(x => x.InstituicaoID == id).FirstOrDefault();
+
+            inst.Cidade = i.Cidade;
+            inst.CodPostal = i.CodPostal;
+            inst.Morada = i.Morada;
+            inst.Nome = i.Nome;
+            inst.Telefone = i.Telefone;
+            inst.TipoInstituicao = i.TipoInstituicao;
+            
             inst.TiposEnsino = _db.TipoEnsino.Where(w => w.InstituicoesTipoEnsino.Any(s => s.TipoEnsinoID == w.TipoEnsinoID && s.InstituicoesID == id)).ToList();
             inst.Servicos = _db.Servicos.Where(w => w.InstituicoesServicos.Any(s => s.ServicosID == w.ServicosID && s.InstituicoesID == id) ).ToList();
-             */
+
+            inst.Ites = _db.InstituicoesTipoEnsinoServicos.Where(w => w.InstituicoesID == id).ToList();
+
+            var serv = _db.Servicos.ToList(); 
+             
+            foreach (var it in serv)
+            {
+                 inst.Ites.Where(w => w.ServicosID == it.ServicosID)
+                    .Select(s => { s.Servicos = it; return s; }).ToList();
+            }
+
             return View(inst);
         }
 
@@ -263,6 +280,7 @@ namespace tp_escolas.Controllers
                 IVm.TiposEnsino.Where(w => w.TipoEnsinoID == serv.TipoEnsinoID)
                     .Select(s => { s.IsSelected = true; s.Valor = serv.Valor; return s; }).ToList();
             }
+            
 
             IVm.Nome = inst.Nome;
             IVm.Cidade = inst.Cidade;
@@ -609,6 +627,13 @@ namespace tp_escolas.Controllers
                 return RedirectToAction("ListaAct");
             }
             
+        }
+
+        public ActionResult Avaliacoes(int? id)
+        {
+            if (id == null || id <= 0)
+                return RedirectToAction("Index");
+             return View(_db.Avaliacoes.Where(w => w.InstituicoesID == id).ToList());
         }
     }
 
