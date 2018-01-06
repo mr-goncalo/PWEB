@@ -5,5 +5,45 @@
 }
 
 <h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Instituições")
+        </th>
+        <th>
+            @Html.Label("Pais")
+        </th>
+        <th>
+            @Html.Label("Geral")
+        </th>
 
-@Html.ActionLink("Instituições","Index","Instituicao");
+    </tr>
+
+    <tr>
+        <td>@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin") </td>
+        <td> s</td>
+        <td>a</td> 
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Adicionar Serviço", "AddServ", "Admin") </td>
+        <td>f</td>
+        <td>f</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Apagar ou Editar Serviço", "ServicoDelEdit", "Admin") </td>
+        <td>f</td>
+        <td>f</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Adicionar Tipo Ensino", "AddTipoEnsino", "Admin") </td>
+        <td>f</td>
+        <td>f</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Editar ou Apagar Tipo Ensino", "TipoEnsinoDelEdit", "Admin") </td>
+        <td>f</td>
+        <td>f</td>
+    </tr>
+</table>
+
+ 

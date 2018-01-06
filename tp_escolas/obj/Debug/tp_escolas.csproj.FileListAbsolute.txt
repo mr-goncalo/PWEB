@@ -150,3 +150,4 @@ C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escol
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.final1.resources
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.final2.resources
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.final3.resources
+C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.InitialCreate.resources

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<tp_escolas.Models.TipoEnsino>
+
+@{
+    ViewBag.Title = "TipoEnsinoDelEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar ou Apagar Tipos de Ensino</h2>
+
+<p>
+    @Html.ActionLink("Novo", "AddTipoEnsino")
+</p>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Editar", "EditTEnsino", new { id=item.TipoEnsinoID }) | 
+            @Html.ActionLink("Apagar", "DelTEnsino", new { id = item.TipoEnsinoID })
+        </td>
+    </tr>
+}
+
+</table>

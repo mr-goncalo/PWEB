@@ -179,6 +179,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\IdentityHelper.cs" />
+    <Compile Include="Migrations\201712212204008_InitialCreate.cs" />
+    <Compile Include="Migrations\201712212204008_InitialCreate.Designer.cs">
+      <DependentUpon>201712212204008_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201801050443102_final.cs" />
     <Compile Include="Migrations\201801050443102_final.Designer.cs">
       <DependentUpon>201801050443102_final.cs</DependentUpon>
@@ -333,11 +338,16 @@
     <Content Include="Views\Pais\InfoActividades.cshtml" />
     <Content Include="Views\Pais\HistAvaliacoes.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Intituicao\Aceitar.cshtml" />
+    <Content Include="Views\Admin\Aceitar.cshtml" />
+    <Content Include="Views\Admin\AddServ.cshtml" />
+    <Content Include="Views\Admin\AddTipoEnsino.cshtml" />
+    <Content Include="Views\Admin\ServicoDelEdit.cshtml" />
+    <Content Include="Views\Admin\EditServ.cshtml" />
+    <Content Include="Views\Admin\TipoEnsinoDelEdit.cshtml" />
+    <Content Include="Views\Admin\EditTEnsino.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\Pais\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -348,6 +358,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712212204008_InitialCreate.resx">
+      <DependentUpon>201712212204008_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801050443102_final.resx">
       <DependentUpon>201801050443102_final.cs</DependentUpon>
     </EmbeddedResource>
