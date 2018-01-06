@@ -27,7 +27,7 @@ namespace tp_escolas.Models
         public string Morada { get; set; }
 
         [Required]
-        public Cidade Cidade { get; set; }
+        virtual public Cidade Cidade { get; set; }
 
         [Required]
         [Display(Name = "Numero de Telefone")]
@@ -45,14 +45,14 @@ namespace tp_escolas.Models
         public string UserID { get; set; }
         
         [Required]
-        public TipoInstituicao TipoInstituicao { get; set; } 
-         
+        public TipoInstituicao TipoInstituicao { get; set; }
 
-        public IList<Actividade> Actividades { get; set; } 
-        public IList<InstituicaoServico> InstituicoesServicos { get; set; }
-        public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
-        public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
-        public IList<Avaliacao> Avaliacoes { get; set; }
+
+        virtual public IList<Actividade> Actividades { get; set; }
+        virtual public IList<InstituicaoServico> InstituicoesServicos { get; set; }
+        virtual public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
+        virtual public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
+        virtual public IList<Avaliacao> Avaliacoes { get; set; }
 
     }
 }

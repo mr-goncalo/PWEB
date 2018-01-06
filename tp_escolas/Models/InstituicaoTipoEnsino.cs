@@ -16,10 +16,10 @@ namespace tp_escolas.Models
         public int InstituicoesID { get; set; }
         [Key, Column(Order = 1), ForeignKey("TipoEnsino")]
         public int TipoEnsinoID { get; set; }
-        
 
-        public Instituicao Instituicoes { get; set; }
-        public TipoEnsino TipoEnsino { get; set; } 
+
+        virtual public Instituicao Instituicoes { get; set; }
+        virtual public TipoEnsino TipoEnsino { get; set; } 
         public double Valor { get; set; }
     }
 }

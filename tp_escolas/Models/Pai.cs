@@ -33,8 +33,10 @@ namespace tp_escolas.Models
         [Required]
         [StringLength(300, MinimumLength = 10)]
         public string Morada { get; set; }
-        [Required]
-        public Cidade Cidades { get; set; }
+
+        [Required] 
+        virtual public Cidade Cidade { get; set; }
+
         [Required]
         [Display(Name = "Codigo Postal")]
         [RegularExpression(@"\d{4}(-\d{3})?$" , ErrorMessage = "Codigo Postal inválido")]
@@ -42,23 +44,9 @@ namespace tp_escolas.Models
 
         [ScaffoldColumn(false)]
         public string UserID {get;set;}
-
-        [NotMapped]
-        [Required]
-        [EmailAddress]
-        [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Please enter correct email")]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [NotMapped]
-        [Required]
-        [StringLength(100, ErrorMessage = "A {0} tem de ter pelo menos {2} caracteres.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-        
-        public IList<Avaliacao> Avaliacoes { get; set; }
-        public IList<PaiInstituicao> PaiInstituição { get; set; }
+          
+        virtual public IList<Avaliacao> Avaliacoes { get; set; }
+        virtual public IList<PaiInstituicao> PaiInstituição { get; set; }
         
     }
 }

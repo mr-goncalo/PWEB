@@ -71,6 +71,8 @@ namespace tp_escolas.Controllers
         [AllowAnonymous]
         public ActionResult Registo()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             InstituicaoViewModelAdd i = new InstituicaoViewModelAdd
             {
                 Servicos = _db.Servicos.ToList(),

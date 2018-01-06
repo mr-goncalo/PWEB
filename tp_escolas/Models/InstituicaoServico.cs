@@ -15,8 +15,8 @@ namespace tp_escolas.Models
         [Key, Column(Order = 1), ForeignKey("Servicos")]
         public int ServicosID { get; set; }
 
-        public Instituicao Instituicoes { get; set; }
-        public Servico Servicos { get; set; }
+        virtual public Instituicao Instituicoes { get; set; }
+        virtual public Servico Servicos { get; set; }
         
 
     }

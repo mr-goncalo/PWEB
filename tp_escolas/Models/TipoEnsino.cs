@@ -20,8 +20,8 @@ namespace tp_escolas.Models
         [NotMapped]
         public double Valor { get; set; }
 
-        public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
-        public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
+        virtual public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
+        virtual public IList<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
 
     }
 }

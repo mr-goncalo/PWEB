@@ -17,7 +17,7 @@ namespace tp_escolas.Models
         [NotMapped]
         public bool IsSelected { get; set; }
 
-        public IList<InstituicaoServico> InstituicoesServicos { get; set; }
-        public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
+        virtual public IList<InstituicaoServico> InstituicoesServicos { get; set; }
+        virtual public IList<InstituicaoTipoEnsinoServico> InstituicoesTipoEnsinoServicos { get; set; }
     }
 }

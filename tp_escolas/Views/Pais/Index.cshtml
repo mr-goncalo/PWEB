@@ -1,22 +1,17 @@
-﻿@model tp_escolas.Models.Pai
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Pais Index</h2>
 
 
-<div class="form-group">
-     @Html.Label("Bem vindo " + Model.Nome,htmlAttributes: new { @class = "control-label col-md-2" }) 
-    <div class="col-md-10">
-       
-    </div>
-</div>
-
-<div class="form-group">
-    @Html.Label("Pertence a "+Model.Morada, htmlAttributes: new { @class = "control-label col-md-2" }) 
-    <div class="col-md-10">
-        
-    </div>
-</div>
+<div >
+    @Html.ActionLink("Editar Informação", "Edit", new { id = @ViewBag.Id }, null)
+    <br />
+    @Html.ActionLink("Pedir Infromaçoes", "lstIns", new { id = @ViewBag.Id }, null) <br />
+    @Html.ActionLink("Avaliar", "Avaliacao", new { id = @ViewBag.Id }, null) <br />
+    @Html.ActionLink("Consultar Historico de Avaliações", "HistAvaliacoes", new { id = @ViewBag.Id }, null) <br />
+    @Html.ActionLink("Ver actividades das Escolas", "LstActividades",new { id = @ViewBag.Id }, null) <br /> 
+    @Html.ActionLink("Pesquisar", " ", new { id = @ViewBag.Id }, null) <br />
+ </div>

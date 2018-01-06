@@ -1,0 +1,47 @@
+﻿@model IEnumerable<tp_escolas.Models.Avaliacao>
+
+@{
+    ViewBag.Title = "HistAvaliacoes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historico De Avaliaçôes</h2>
+
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Instituição")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota)
+        </th>
+        <th>
+            @Html.Label("Data")
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instituicoes.Nome)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+    </tr>
+}
+
+</table>

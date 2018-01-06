@@ -16,7 +16,7 @@ namespace tp_escolas.Models
         [MinLength(10)]
         public string Descricao { get; set; } 
 
-        public Instituicao Instituicao { get; set; }
+       virtual public Instituicao Instituicao { get; set; }
 
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]

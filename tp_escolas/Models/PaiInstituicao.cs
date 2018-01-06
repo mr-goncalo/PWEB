@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tp_escolas.Models
 {
-    [Table("PaisInstituicoes")] 
+    [Table("PaisInstituicoes")]
     public class PaiInstituicao
     {
         [Key, Column(Order = 0), ForeignKey("Pais")]
@@ -15,9 +15,9 @@ namespace tp_escolas.Models
         [Key, Column(Order = 1), ForeignKey("Instituicoes")]
         public int InstituicoesID { get; set; }
 
-        
-        public Pai Pais { get; set; }
-        public Instituicao Instituicoes { get; set; }
+
+        virtual public Pai Pais { get; set; }
+        virtual public Instituicao Instituicoes { get; set; }
         public DateTime Data { get; set; }
         public bool Activo { get; set; }
     }
