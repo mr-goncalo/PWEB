@@ -11,6 +11,8 @@ namespace tp_escolas.Models.ViewModels
     public class InstituicaoViewModelEdit
     {
          
+        public int InstituicaoID { get; set; }
+
         [Required]
         [MinPalavras(2, ErrorMessage = "Nome demasiado pequeno! ")]
         [MaxLength(120)]

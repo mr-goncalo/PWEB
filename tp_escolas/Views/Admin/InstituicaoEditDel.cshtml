@@ -1,0 +1,55 @@
+﻿@model IEnumerable<tp_escolas.Models.Instituicao>
+
+@{
+    ViewBag.Title = "InstituicaoEditDel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>InstituicaoEditDel</h2>
+
+<p>
+    @Html.ActionLink("Criar Nova", "InstAdd")
+</p>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Morada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodPostal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Morada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodPostal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "InstEdit", new { id = item.InstituicaoID }) |
+            @Html.ActionLink("Apagar", "InstDel", new { id = item.InstituicaoID },
+           new { onclick = "return confirm('Deseja mesmo Apagar?');" })
+        </td>
+    </tr>
+}
+
+</table>

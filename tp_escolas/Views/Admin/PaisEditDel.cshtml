@@ -1,0 +1,55 @@
+﻿@model IEnumerable<tp_escolas.Models.Pai>
+
+@{
+    ViewBag.Title = "PaisEditDel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gestão de Pais</h2>
+
+<p>
+    @Html.ActionLink("Novo", "PaiAdd")
+</p>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Morada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodPostal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Morada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodPostal)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "PaiEdit", new { id=item.PaisID }) |
+             @Html.ActionLink("Apagar", "PaiDel", new { id=item.PaisID },
+           new { onclick = "return confirm('Deseja mesmo Apagar?');" })
+        </td>
+    </tr>
+}
+
+</table>

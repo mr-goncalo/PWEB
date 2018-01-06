@@ -32,7 +32,8 @@
         </td>
         <td>
             @Html.ActionLink("Editar", "EditServ", new { id=item.ServicosID }) | 
-            @Html.ActionLink("Apagar", "DelServ", new { id=item.ServicosID })
+            @Html.ActionLink("Apagar", "DelServ", new { id=item.ServicosID },
+           new { onclick = "return confirm('Deseja mesmo Apagar?');" })
         </td>
     </tr>
 }

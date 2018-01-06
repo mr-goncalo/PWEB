@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201801060432145_final3.Designer.cs">
       <DependentUpon>201801060432145_final3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801062005270_ff.cs" />
+    <Compile Include="Migrations\201801062005270_ff.Designer.cs">
+      <DependentUpon>201801062005270_ff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividade.cs" />
@@ -242,6 +246,7 @@
     <Compile Include="Models\InstituicaoServico.cs" />
     <Compile Include="Models\InstituicaoTipoEnsino.cs" />
     <Compile Include="Models\InstituicaoTipoEnsinoServico.cs" />
+    <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\AvaliacaoViewModelAdd.cs" />
     <Compile Include="Models\ViewModels\InstituicaoViewModel.cs" />
     <Compile Include="Models\ViewModels\InstituicaoViewModelAdd.cs" />
@@ -262,6 +267,8 @@
     <Compile Include="ValidationAttributes\MinPalavrasAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-mint.css" />
+    <Content Include="Content\bootstrap-mint.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -345,6 +352,14 @@
     <Content Include="Views\Admin\EditServ.cshtml" />
     <Content Include="Views\Admin\TipoEnsinoDelEdit.cshtml" />
     <Content Include="Views\Admin\EditTEnsino.cshtml" />
+    <Content Include="Views\Admin\InstEdit.cshtml" />
+    <Content Include="Views\Admin\InstituicaoEditDel.cshtml" />
+    <Content Include="Views\Admin\InstAdd.cshtml" />
+    <Content Include="Views\Admin\PaisEditDel.cshtml" />
+    <Content Include="Views\Admin\PaiEdit.cshtml" />
+    <Content Include="Views\Admin\PaiAdd.cshtml" />
+    <Content Include="Views\Admin\AdminAddDel.cshtml" />
+    <Content Include="Views\Admin\AdminAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,6 +411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801060432145_final3.resx">
       <DependentUpon>201801060432145_final3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801062005270_ff.resx">
+      <DependentUpon>201801062005270_ff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

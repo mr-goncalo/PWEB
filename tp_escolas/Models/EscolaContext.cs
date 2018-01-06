@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Configuration;
 namespace tp_escolas.Models
 {
     public class EscolaContext : DbContext 
     {
         public EscolaContext() : base("name=dbconn")
         {
-
+           
         }
 
         public DbSet<Actividade> Actividades { get; set; }
@@ -24,7 +25,13 @@ namespace tp_escolas.Models
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<TipoEnsino> TipoEnsino { get; set; }
 
-         
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Actividade>() 
+                .HasRequired(hr => hr.Instituicao)
+                .WithMany() 
+                .WillCascadeOnDelete(true);
+        }
 
     }
 }

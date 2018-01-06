@@ -29,7 +29,8 @@
         
         <td>
             @Html.ActionLink("Editar", "EditTEnsino", new { id=item.TipoEnsinoID }) | 
-            @Html.ActionLink("Apagar", "DelTEnsino", new { id = item.TipoEnsinoID })
+            @Html.ActionLink("Apagar", "DelTEnsino", new { id = item.TipoEnsinoID }, 
+           new { onclick = "return confirm('Deseja mesmo Apagar?');" })
         </td>
     </tr>
 }

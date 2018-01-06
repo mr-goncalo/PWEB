@@ -121,7 +121,7 @@ namespace tp_escolas.Controllers
             return View(inst);
         }
 
-        // GET: Instituicao/Create
+   
         [AllowAnonymous]
         public ActionResult ListaInstituicoes()
         {

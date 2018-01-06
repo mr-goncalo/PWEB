@@ -9,6 +9,8 @@ namespace tp_escolas.Models.ViewModels
 {
     public class PaiViewModelEdit
     {
+        [ScaffoldColumn(false)]
+        public int PaisID { get; set; }
         [Required]
         [MinPalavras(2, ErrorMessage = "{0} Demasiado pequeno")]
         [Display(Name = "Nome Completo")]

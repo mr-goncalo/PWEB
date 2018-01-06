@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestão Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,28 +21,33 @@
 
     <tr>
         <td>@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin") </td>
-        <td> s</td>
-        <td>a</td> 
+        <td>@Html.ActionLink("Adicionar Editar ou Apagar Pais", "PaisEditDel", "Admin") </td>
+        <td>@Html.ActionLink("Adicionar Editar ou Apagar Admin", "AdminAddDel", "Admin")</td> 
     </tr>
     <tr>
         <td>@Html.ActionLink("Adicionar Serviço", "AddServ", "Admin") </td>
-        <td>f</td>
-        <td>f</td>
+        <td> </td>
+        <td> </td> 
     </tr>
     <tr>
         <td>@Html.ActionLink("Apagar ou Editar Serviço", "ServicoDelEdit", "Admin") </td>
-        <td>f</td>
-        <td>f</td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>@Html.ActionLink("Adicionar Tipo Ensino", "AddTipoEnsino", "Admin") </td>
-        <td>f</td>
-        <td>f</td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <td>@Html.ActionLink("Editar ou Apagar Tipo Ensino", "TipoEnsinoDelEdit", "Admin") </td>
-        <td>f</td>
-        <td>f</td>
+        <td> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Editar Adicionar ou Apagar Instituição", "InstituicaoEditDel", "Admin") </td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
 
