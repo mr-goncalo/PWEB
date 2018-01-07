@@ -284,7 +284,7 @@ namespace tp_escolas.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
+                { 
                     Avaliacao a = new Avaliacao();
                     a.Pais = _db.Pais.Find(Convert.ToInt32(id));
                     a.Data = DateTime.Now;
@@ -293,7 +293,7 @@ namespace tp_escolas.Controllers
                     a.Descricao = av.Descricao;
                     _db.Avaliacoes.Add(a);
                     _db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index"); 
 
                 }
 
@@ -325,12 +325,12 @@ namespace tp_escolas.Controllers
         }
         void ListaInst(int id)
         {
-            var anoP = DateTime.Now.AddYears(-1);
+           var anoP = DateTime.Now.AddYears(-1);
             var DataHoje = DateTime.Now.Date;
 
             // vai buscar todas as instituicoes que ja acabaram o ano lectivo
             var finalAno = _db.Actividades.Where(w =>  w.Instituicao.Activa && w.Descricao.ToLower().Equals("ano lectivo")
-                            && w.DataInicio.Year == anoP.Year
+                            && w.DataInicio.Year >= anoP.Year
                             && DbFunctions.TruncateTime(w.DataTermino) <= DataHoje).ToList();
 
             var Avaliacoes = _db.Avaliacoes.Where(w => w.Data.Year == DateTime.Now.Year && w.Pais.PaisID == id).ToList();
@@ -345,6 +345,7 @@ namespace tp_escolas.Controllers
                 ViewBag.Inst = null;
             else
                 ViewBag.Inst = new SelectList(finalAno.Select(s => s.Instituicao).ToList(), "InstituicaoId", "Nome");
+                
         }
 
         public ActionResult LstIns()
@@ -404,6 +405,7 @@ namespace tp_escolas.Controllers
         {
             var UserId = User.Identity.GetUserId();
             var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
+          
             return View(_db.Avaliacoes.Where(w => w.Pais.PaisID == id).OrderByDescending(ob => ob.Data).ToList());
         }
          public ActionResult Pesquisa()

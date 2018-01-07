@@ -96,8 +96,15 @@ namespace tp_escolas.Controllers
         [AllowAnonymous]
         public ActionResult Info(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id == 0) {
+                var userId = User.Identity.GetUserId();
+                var aux = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == userId);
+                if(aux != null)
+                {
+                    id = aux.InstituicaoID;
+                }else
                 return RedirectToAction("ListaInstituicoes");
+            }
             InstituicaoViewModel inst = new InstituicaoViewModel();
             var i = _db.Instituicoes.Where(x => x.InstituicaoID == id).FirstOrDefault();
 
@@ -107,9 +114,12 @@ namespace tp_escolas.Controllers
             inst.Nome = i.Nome;
             inst.Telefone = i.Telefone;
             inst.TipoInstituicao = i.TipoInstituicao;
-            
-            inst.TiposEnsino = _db.TipoEnsino.Where(w => w.InstituicoesTipoEnsino.Any(s => s.TipoEnsinoID == w.TipoEnsinoID && s.InstituicoesID == id)).ToList();
+
+            inst.InstituicoesTipoEnsino = _db.InstituicaoTipoEnsino.Where(w => w.Instituicoes.InstituicaoID == id).ToList();
+            //inst.TiposEnsino = _db.TipoEnsino.Where(w => w.InstituicoesTipoEnsino.Any(s => s.TipoEnsinoID == w.TipoEnsinoID && s.InstituicoesID == id)).ToList();
             inst.Servicos = _db.Servicos.Where(w => w.InstituicoesServicos.Any(s => s.ServicosID == w.ServicosID && s.InstituicoesID == id) ).ToList();
+
+            
 
             inst.Ites = _db.InstituicoesTipoEnsinoServicos.Where(w => w.InstituicoesID == id).ToList();
 
@@ -566,7 +576,7 @@ namespace tp_escolas.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CriarActividade(Actividade act)
+        public ActionResult CriarActividade(ActividadeViewModelAdd act)
         {
             try
             {
@@ -577,10 +587,15 @@ namespace tp_escolas.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    var UserId = User.Identity.GetUserId();
-                    act.Instituicao = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == UserId);
 
-                    _db.Actividades.Add(act);
+                    var UserId = User.Identity.GetUserId();
+                    var a = new Actividade();
+                    a.Instituicao = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == UserId);
+                    a.DataInicio = act.DataInicio;
+                    a.DataTermino = act.DataTermino;
+                    a.Descricao = act.Descricao;
+
+                    _db.Actividades.Add(a);
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -607,7 +622,7 @@ namespace tp_escolas.Controllers
             return View(act);
         }
         [HttpPost]
-        public ActionResult ActividadeEdit(Actividade act)
+        public ActionResult ActividadeEdit(ActividadeViewModelAdd act)
         {
 
             try
@@ -619,15 +634,13 @@ namespace tp_escolas.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    var UserId = User.Identity.GetUserId();
-                    act.Instituicao = _db.Instituicoes.FirstOrDefault(fs => fs.UserID == UserId);
+                    
                     var actEdit = _db.Actividades.Find(act.ActividadeID);
 
                     actEdit.DataInicio = act.DataInicio;
                     actEdit.DataTermino = act.DataTermino;
                     actEdit.Descricao = act.Descricao;
-                    actEdit.Instituicao = act.Instituicao;
-
+ 
                     _db.SaveChanges();
                     return RedirectToAction("ListaAct");
                 }
@@ -665,6 +678,7 @@ namespace tp_escolas.Controllers
         {
             var UserId = User.Identity.GetUserId();
             var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
+         
             return View(_db.Avaliacoes.Where(w => w.Instituicoes.InstituicaoID == id).ToList());
         }
     }

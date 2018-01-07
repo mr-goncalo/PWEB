@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ServicoAddEdit</h2>
+<h2>Gestão de Serviços</h2>
 
 <p>
     @Html.ActionLink("Novo", "AddServ")
@@ -27,9 +27,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsSelected)
-        </td>
+        
         <td>
             @Html.ActionLink("Editar", "EditServ", new { id=item.ServicosID }) | 
             @Html.ActionLink("Apagar", "DelServ", new { id=item.ServicosID },

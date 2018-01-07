@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201801071030266_Inicial.Designer.cs">
       <DependentUpon>201801071030266_Inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801072245568_vasa2.cs" />
+    <Compile Include="Migrations\201801072245568_vasa2.Designer.cs">
+      <DependentUpon>201801072245568_vasa2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividade.cs" />
@@ -194,6 +198,7 @@
     <Compile Include="Models\InstituicaoServico.cs" />
     <Compile Include="Models\InstituicaoTipoEnsino.cs" />
     <Compile Include="Models\InstituicaoTipoEnsinoServico.cs" />
+    <Compile Include="Models\ViewModels\ActividadeViewModelAdd.cs" />
     <Compile Include="Models\ViewModels\AdminViewModel.cs" />
     <Compile Include="Models\ViewModels\AvaliacaoViewModelAdd.cs" />
     <Compile Include="Models\ViewModels\InstituicaoViewModel.cs" />
@@ -331,6 +336,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801071030266_Inicial.resx">
       <DependentUpon>201801071030266_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801072245568_vasa2.resx">
+      <DependentUpon>201801072245568_vasa2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -34,7 +34,7 @@
                     {
                         <li style="margin-top:2px;">@Html.ActionLink("Admin Home", "Index", "Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Servicos", "ServicoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Servicos", "ServicoDelEdit","Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Tipo Ensino", "TipoEnsinoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Pais", "PaisEditDel", "Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Instituições", "InstituicaoEditDel", null, "Admin", new { @class = "btn btn-warning" })</li>
@@ -44,11 +44,11 @@
                     {
                         <li style="margin-top:2px;">@Html.ActionLink("Pais Home", "Index", "Pais", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Avaliação", "Avaliacao", "Pais", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Historico Avaliações", "HistAvaliacoes", null, "Pais", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Historico Avaliações", "HistAvaliacoes", "Pais", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Lista Actividades das escolas", "LstActividades", null, "Pais", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Pedir Informações", "LstIns", "Pais", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Editar Dados", "Edit", "Pais", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Pesquisar", "Pesquisar", "Pais", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Pesquisa Avançada", "Pesquisa", "Pais", null, new { @class = "btn btn-warning" })</li>
 
                     }@if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Instituicao))
                     {
@@ -57,6 +57,8 @@
                         <li style="margin-top:2px;">@Html.ActionLink("Aceitar Pais", "ListaPais", "Instituicao", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão de Actividades", "ListaAct", "Instituicao", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Avaliacoes", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Ver Informação", "Info", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+
 
                     }
 

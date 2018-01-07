@@ -170,6 +170,9 @@ namespace tp_escolas.Controllers
                 // TODO: Add delete logic here
                 if (serv.Descricao.TrimStart() == "" || serv.Descricao == null)
                     ModelState.AddModelError("Descricao", "Por favor insira uma descrição");
+                if (_db.Servicos.Where(w => w.Descricao.ToUpper() == serv.Descricao).Count() > 0)
+                    ModelState.AddModelError("Descricao", "Nome de serviço já existe");
+
                 if (ModelState.IsValid)
                 {
                     _db.Servicos.Add(serv);
@@ -199,6 +202,9 @@ namespace tp_escolas.Controllers
                 // TODO: Add delete logic here
                 if (te.Descricao.TrimStart() == "" || te.Descricao == null)
                     ModelState.AddModelError("Descricao", "Por favor insira uma descrição");
+                if (_db.TipoEnsino.Where(w => w.Descricao.ToUpper() == te.Descricao).Count() > 0)
+                    ModelState.AddModelError("Descricao", "Tipo de Ensino já existe");
+
                 if (ModelState.IsValid)
                 {
                     _db.TipoEnsino.Add(te);
@@ -899,7 +905,10 @@ namespace tp_escolas.Controllers
             {
                 // TODO: Add delete logic here
                 if (c.CidadeNome.TrimStart() == "" || c.CidadeNome == null)
-                    ModelState.AddModelError("Descricao", "Por favor insira uma descrição");
+                    ModelState.AddModelError("CidadeNome", "Por favor insira uma descrição");
+                if (_db.Cidades.Where(w => w.CidadeNome.ToUpper() == c.CidadeNome).Count() > 0)
+                    ModelState.AddModelError("CidadeNome", "Nome da Cidade já existe");
+
                 if (ModelState.IsValid)
                 {
                     _db.Cidades.Add(c);

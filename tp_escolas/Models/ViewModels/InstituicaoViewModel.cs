@@ -39,5 +39,7 @@ namespace tp_escolas.Models.ViewModels
         public List<Servico> Servicos { get; set; }
         public List<TipoEnsino> TiposEnsino { get; set; }
         public List<InstituicaoTipoEnsinoServico> Ites { get; set; }
+        public List<InstituicaoTipoEnsino> InstituicoesTipoEnsino { get; set; }
+
     }
 }

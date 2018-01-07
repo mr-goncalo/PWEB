@@ -11,7 +11,7 @@ namespace tp_escolas.Models.ViewModels
         [Required]
         virtual public int InstituicoesID { get; set; }
 
-         public string Descricao { get; set; }
+        public string Descricao { get; set; }
         [Range(1, 10, ErrorMessage = "Por favor classifique entre 1 e 10")]
         public int Nota { get; set; }
         

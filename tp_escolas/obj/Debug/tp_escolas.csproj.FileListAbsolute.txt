@@ -136,6 +136,7 @@ C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\bin\Microsoft.Owin
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.csproj.CoreCompileInputs.cache
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.dll
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.pdb
-C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.csprojResolveAssemblyReference.cache
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.Inicial.resources
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.csproj.GenerateResource.Cache
+C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.vasa2.resources
+C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.csprojResolveAssemblyReference.cache

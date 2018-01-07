@@ -10,12 +10,12 @@ namespace tp_escolas.Models
     [Table("Avaliacoes")]
     public class Avaliacao
     { 
-       /*
+       
         [Key, Column(Order = 1), ForeignKey("Pais")]
         public int PaisID { get; set; }
         [Key, Column(Order = 2), ForeignKey("Instituicoes")] 
         public int InstituicoesID { get; set; }
-        */
+        
         [Required]
         virtual public Pai Pais { get; set; }
         [Required]

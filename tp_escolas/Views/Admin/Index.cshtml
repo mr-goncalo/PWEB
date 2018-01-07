@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Painel De Gestão</h2>
 <table class="table">
     <tr>
         <th>
@@ -21,34 +21,25 @@
 
     <tr>
         <td>@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin") </td>
-        <td>@Html.ActionLink("Adicionar Editar ou Apagar Pais", "PaisEditDel", "Admin") </td>
-        <td>@Html.ActionLink("Adicionar Editar ou Apagar Admin", "AdminAddDel", "Admin")</td> 
+        <td>@Html.ActionLink("Gestão de Pais", "PaisEditDel", "Admin") </td>
+        <td>@Html.ActionLink("Gestão de Admins", "AdminAddDel", "Admin")</td> 
     </tr>
     <tr>
-        <td>@Html.ActionLink("Adicionar Serviço", "AddServ", "Admin") </td>
+        <td>@Html.ActionLink("Getão de Serviços", "ServicoDelEdit", "Admin") </td>
         <td> </td>
         <td>@Html.ActionLink("Gestão de Cidades", "CidadesAddEdit","Admin") </td> 
     </tr>
     <tr>
-        <td>@Html.ActionLink("Apagar ou Editar Serviço", "ServicoDelEdit", "Admin") </td>
+        <td>@Html.ActionLink("Gestão Tipos De Ensino", "TipoEnsinoDelEdit", "Admin") </td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>@Html.ActionLink("Adicionar Tipo Ensino", "AddTipoEnsino", "Admin") </td>
+        <td>@Html.ActionLink("Gestão de Instituições", "InstituicaoEditDel", "Admin") </td>
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td>@Html.ActionLink("Editar ou Apagar Tipo Ensino", "TipoEnsinoDelEdit", "Admin") </td>
-        <td> </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>@Html.ActionLink("Editar Adicionar ou Apagar Instituição", "InstituicaoEditDel", "Admin") </td>
-        <td></td>
-        <td></td>
-    </tr>
+  
 </table>
 
  
