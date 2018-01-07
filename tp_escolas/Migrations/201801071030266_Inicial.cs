@@ -3,7 +3,7 @@ namespace tp_escolas.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class creat : DbMigration
+    public partial class Inicial : DbMigration
     {
         public override void Up()
         {
@@ -15,10 +15,10 @@ namespace tp_escolas.Migrations
                         Descricao = c.String(nullable: false),
                         DataInicio = c.DateTime(nullable: false),
                         DataTermino = c.DateTime(nullable: false),
-                        Instituicao_InstituicaoID = c.Int(),
+                        Instituicao_InstituicaoID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ActividadeID)
-                .ForeignKey("dbo.Instituicoes", t => t.Instituicao_InstituicaoID)
+                .ForeignKey("dbo.Instituicoes", t => t.Instituicao_InstituicaoID, cascadeDelete: true)
                 .Index(t => t.Instituicao_InstituicaoID);
             
             CreateTable(
@@ -43,17 +43,17 @@ namespace tp_escolas.Migrations
                 "dbo.Avaliacoes",
                 c => new
                     {
-                        PaisID = c.Int(nullable: false),
-                        InstituicoesID = c.Int(nullable: false),
                         Data = c.DateTime(nullable: false),
                         Descricao = c.String(),
                         Nota = c.Int(nullable: false),
+                        Instituicoes_InstituicaoID = c.Int(nullable: false),
+                        Pais_PaisID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.PaisID, t.InstituicoesID, t.Data })
-                .ForeignKey("dbo.Instituicoes", t => t.InstituicoesID, cascadeDelete: true)
-                .ForeignKey("dbo.Pais", t => t.PaisID, cascadeDelete: true)
-                .Index(t => t.PaisID)
-                .Index(t => t.InstituicoesID);
+                .PrimaryKey(t => t.Data)
+                .ForeignKey("dbo.Instituicoes", t => t.Instituicoes_InstituicaoID, cascadeDelete: true)
+                .ForeignKey("dbo.Pais", t => t.Pais_PaisID, cascadeDelete: true)
+                .Index(t => t.Instituicoes_InstituicaoID)
+                .Index(t => t.Pais_PaisID);
             
             CreateTable(
                 "dbo.Pais",
@@ -159,9 +159,9 @@ namespace tp_escolas.Migrations
             
         }
         
-
         public override void Down()
         {
+            DropForeignKey("dbo.Actividades", "Instituicao_InstituicaoID", "dbo.Instituicoes");
             DropForeignKey("dbo.InstituicoesServicos", "ServicosID", "dbo.Servicos");
             DropForeignKey("dbo.InstituicoesTipoEnsinoServicos", "TipoEnsinoID", "dbo.TipoEnsino");
             DropForeignKey("dbo.InstituicoesTipoEnsino", "TipoEnsinoID", "dbo.TipoEnsino");
@@ -170,12 +170,11 @@ namespace tp_escolas.Migrations
             DropForeignKey("dbo.InstituicoesTipoEnsinoServicos", "InstituicoesID", "dbo.Instituicoes");
             DropForeignKey("dbo.InstituicoesServicos", "InstituicoesID", "dbo.Instituicoes");
             DropForeignKey("dbo.Instituicoes", "Cidade_CidadeID", "dbo.Cidades");
-            DropForeignKey("dbo.Avaliacoes", "PaisID", "dbo.Pais");
+            DropForeignKey("dbo.Avaliacoes", "Pais_PaisID", "dbo.Pais");
             DropForeignKey("dbo.PaisInstituicoes", "PaisID", "dbo.Pais");
             DropForeignKey("dbo.PaisInstituicoes", "InstituicoesID", "dbo.Instituicoes");
             DropForeignKey("dbo.Pais", "Cidade_CidadeID", "dbo.Cidades");
-            DropForeignKey("dbo.Avaliacoes", "InstituicoesID", "dbo.Instituicoes");
-            DropForeignKey("dbo.Actividades", "Instituicao_InstituicaoID", "dbo.Instituicoes");
+            DropForeignKey("dbo.Avaliacoes", "Instituicoes_InstituicaoID", "dbo.Instituicoes");
             DropIndex("dbo.InstituicoesTipoEnsino", new[] { "TipoEnsinoID" });
             DropIndex("dbo.InstituicoesTipoEnsino", new[] { "InstituicoesID" });
             DropIndex("dbo.InstituicoesTipoEnsinoServicos", new[] { "ServicosID" });
@@ -186,8 +185,8 @@ namespace tp_escolas.Migrations
             DropIndex("dbo.PaisInstituicoes", new[] { "InstituicoesID" });
             DropIndex("dbo.PaisInstituicoes", new[] { "PaisID" });
             DropIndex("dbo.Pais", new[] { "Cidade_CidadeID" });
-            DropIndex("dbo.Avaliacoes", new[] { "InstituicoesID" });
-            DropIndex("dbo.Avaliacoes", new[] { "PaisID" });
+            DropIndex("dbo.Avaliacoes", new[] { "Pais_PaisID" });
+            DropIndex("dbo.Avaliacoes", new[] { "Instituicoes_InstituicaoID" });
             DropIndex("dbo.Instituicoes", new[] { "Cidade_CidadeID" });
             DropIndex("dbo.Actividades", new[] { "Instituicao_InstituicaoID" });
             DropTable("dbo.InstituicoesTipoEnsino");

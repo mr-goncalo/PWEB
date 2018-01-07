@@ -329,15 +329,15 @@ namespace tp_escolas.Controllers
             var DataHoje = DateTime.Now.Date;
 
             // vai buscar todas as instituicoes que ja acabaram o ano lectivo
-            var finalAno = _db.Actividades.Where(w => w.Descricao.ToLower().Equals("ano lectivo")
+            var finalAno = _db.Actividades.Where(w =>  w.Instituicao.Activa && w.Descricao.ToLower().Equals("ano lectivo")
                             && w.DataInicio.Year == anoP.Year
                             && DbFunctions.TruncateTime(w.DataTermino) <= DataHoje).ToList();
 
-            var Avaliacoes = _db.Avaliacoes.Where(w => w.Data.Year == DateTime.Now.Year && w.PaisID == id).ToList();
+            var Avaliacoes = _db.Avaliacoes.Where(w => w.Data.Year == DateTime.Now.Year && w.Pais.PaisID == id).ToList();
 
             foreach (var it in Avaliacoes)
             {
-                finalAno.Remove(finalAno.FirstOrDefault(fs => fs.Instituicao.InstituicaoID == it.InstituicoesID));
+                finalAno.Remove(finalAno.FirstOrDefault(fs => fs.Instituicao.InstituicaoID == it.Instituicoes.InstituicaoID));
             }
 
             var inst = finalAno.Select(s => s.Instituicao).ToList();
@@ -352,7 +352,7 @@ namespace tp_escolas.Controllers
             var UserId = User.Identity.GetUserId();
             var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
             var aux = _db.PaisInstituiçoes.Where(w => w.PaisID == id).ToList();
-            var lstInst = _db.Instituicoes.ToList();
+            var lstInst = _db.Instituicoes.Where(w=> w.Activa).ToList();
             foreach (var it in aux)
             {
                 lstInst.Remove(lstInst.FirstOrDefault(fs => fs.InstituicaoID == it.InstituicoesID));
@@ -421,7 +421,7 @@ namespace tp_escolas.Controllers
     }, "Value", "Text", 1);
 
             ViewBag.Inst = ti;
-            var inst = _db.Instituicoes.ToList();
+            var inst = _db.Instituicoes.Where(w => w.Activa).ToList();
             foreach (var it in inst)
             {
                 foreach (var item in it.Avaliacoes)
@@ -437,7 +437,7 @@ namespace tp_escolas.Controllers
         public PartialViewResult Pesquisa(List<int> id, List<int> serv, List<int> Tensi, List<string> Tesco)
         {
 
-            var inst = _db.Instituicoes.ToList();
+            var inst = _db.Instituicoes.Where(w => w.Activa).ToList();
             if (id.Count > 0 && id[0] >0)
                 inst = inst.Where(w => w.Cidade.CidadeID == id[0]).ToList();
             if (serv != null && serv.Count > 0)

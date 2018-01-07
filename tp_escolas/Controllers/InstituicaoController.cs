@@ -129,7 +129,7 @@ namespace tp_escolas.Controllers
         {
 
             ViewBag.Cidades = ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
-            var inst = _db.Instituicoes.ToList();
+            var inst = _db.Instituicoes.Where(w => w.Activa).ToList();
             foreach(var it in inst)
             {
                foreach(var item in it.Avaliacoes)
@@ -145,7 +145,7 @@ namespace tp_escolas.Controllers
         [HttpPost]
         public PartialViewResult ListaInstituicoes(int? id)
         {
-            var inst = _db.Instituicoes.ToList();
+            var inst = _db.Instituicoes.Where(w => w.Activa).ToList();
             if (id > 0)
                 inst = inst.Where(w => w.Cidade.CidadeID == id).ToList();
             foreach (var it in inst)
@@ -665,7 +665,7 @@ namespace tp_escolas.Controllers
         {
             var UserId = User.Identity.GetUserId();
             var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
-            return View(_db.Avaliacoes.Where(w => w.InstituicoesID == id).ToList());
+            return View(_db.Avaliacoes.Where(w => w.Instituicoes.InstituicaoID == id).ToList());
         }
     }
 
