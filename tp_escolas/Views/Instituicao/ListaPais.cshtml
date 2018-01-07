@@ -26,7 +26,7 @@
                     @Html.DisplayFor(modelItem => item.Telefone)
                 </td> 
                 <td>
-                    @Html.ActionLink("Aceitar", "ListaPais", new { idIns = @ViewBag.IdIns, idPai = item.PaisID })
+                    @Html.ActionLink("Aceitar", "ListaPais", new {idPai = item.PaisID })
                 </td>
             </tr>
     }

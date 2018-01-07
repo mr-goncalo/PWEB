@@ -180,61 +180,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\IdentityHelper.cs" />
-    <Compile Include="Migrations\201712212204008_InitialCreate.cs" />
-    <Compile Include="Migrations\201712212204008_InitialCreate.Designer.cs">
-      <DependentUpon>201712212204008_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801050443102_final.cs" />
-    <Compile Include="Migrations\201801050443102_final.Designer.cs">
-      <DependentUpon>201801050443102_final.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801050517320_finalV2.cs" />
-    <Compile Include="Migrations\201801050517320_finalV2.Designer.cs">
-      <DependentUpon>201801050517320_finalV2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801050528567_finalV21.cs" />
-    <Compile Include="Migrations\201801050528567_finalV21.Designer.cs">
-      <DependentUpon>201801050528567_finalV21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801050529409_finalV22.cs" />
-    <Compile Include="Migrations\201801050529409_finalV22.Designer.cs">
-      <DependentUpon>201801050529409_finalV22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801052220313_finalV23.cs" />
-    <Compile Include="Migrations\201801052220313_finalV23.Designer.cs">
-      <DependentUpon>201801052220313_finalV23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801052327116_finalV24.cs" />
-    <Compile Include="Migrations\201801052327116_finalV24.Designer.cs">
-      <DependentUpon>201801052327116_finalV24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801052328385_finalV25.cs" />
-    <Compile Include="Migrations\201801052328385_finalV25.Designer.cs">
-      <DependentUpon>201801052328385_finalV25.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801060136115_m1.cs" />
-    <Compile Include="Migrations\201801060136115_m1.Designer.cs">
-      <DependentUpon>201801060136115_m1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801060215257_m11.cs" />
-    <Compile Include="Migrations\201801060215257_m11.Designer.cs">
-      <DependentUpon>201801060215257_m11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801060224374_final1.cs" />
-    <Compile Include="Migrations\201801060224374_final1.Designer.cs">
-      <DependentUpon>201801060224374_final1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801060424574_final2.cs" />
-    <Compile Include="Migrations\201801060424574_final2.Designer.cs">
-      <DependentUpon>201801060424574_final2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801060432145_final3.cs" />
-    <Compile Include="Migrations\201801060432145_final3.Designer.cs">
-      <DependentUpon>201801060432145_final3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801062005270_ff.cs" />
-    <Compile Include="Migrations\201801062005270_ff.Designer.cs">
-      <DependentUpon>201801062005270_ff.cs</DependentUpon>
+    <Compile Include="Migrations\201801070559409_creat.cs" />
+    <Compile Include="Migrations\201801070559409_creat.Designer.cs">
+      <DependentUpon>201801070559409_creat.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -378,47 +326,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712212204008_InitialCreate.resx">
-      <DependentUpon>201712212204008_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801050443102_final.resx">
-      <DependentUpon>201801050443102_final.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801050517320_finalV2.resx">
-      <DependentUpon>201801050517320_finalV2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801050528567_finalV21.resx">
-      <DependentUpon>201801050528567_finalV21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801050529409_finalV22.resx">
-      <DependentUpon>201801050529409_finalV22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801052220313_finalV23.resx">
-      <DependentUpon>201801052220313_finalV23.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801052327116_finalV24.resx">
-      <DependentUpon>201801052327116_finalV24.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801052328385_finalV25.resx">
-      <DependentUpon>201801052328385_finalV25.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801060136115_m1.resx">
-      <DependentUpon>201801060136115_m1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801060215257_m11.resx">
-      <DependentUpon>201801060215257_m11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801060224374_final1.resx">
-      <DependentUpon>201801060224374_final1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801060424574_final2.resx">
-      <DependentUpon>201801060424574_final2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801060432145_final3.resx">
-      <DependentUpon>201801060432145_final3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801062005270_ff.resx">
-      <DependentUpon>201801062005270_ff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801070559409_creat.resx">
+      <DependentUpon>201801070559409_creat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

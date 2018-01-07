@@ -186,10 +186,10 @@ namespace tp_escolas.Controllers
         }
 
         // GET: Pais/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit( )
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
 
             Pai p = new Pai();
             p = _db.Pais.FirstOrDefault(fs => fs.PaisID == id);
@@ -267,10 +267,10 @@ namespace tp_escolas.Controllers
             }
         }
 
-        public ActionResult Avaliacao(int? id)
+        public ActionResult Avaliacao()
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
             ListaInst(Convert.ToInt32(id));
             return View();
         }
@@ -344,10 +344,10 @@ namespace tp_escolas.Controllers
                 ViewBag.Inst = new SelectList(finalAno.Select(s => s.Instituicao).ToList(), "InstituicaoId", "Nome");
         }
 
-        public ActionResult LstIns(int? id)
+        public ActionResult LstIns()
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
             var aux = _db.PaisInstituiçoes.Where(w => w.PaisID == id).ToList();
             var lstInst = _db.Instituicoes.ToList();
             foreach (var it in aux)
@@ -379,10 +379,10 @@ namespace tp_escolas.Controllers
             return RedirectToAction("LstIns", "Pais", new { id = idP });
         }
 
-        public ActionResult LstActividades(int? id)
+        public ActionResult LstActividades( )
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
             ViewBag.Id = id;
             return View(_db.PaisInstituiçoes.Where(w => w.PaisID == id && w.Activo).Select(s => s.Instituicoes).ToList());
         }
@@ -397,14 +397,13 @@ namespace tp_escolas.Controllers
         }
 
 
-        public ActionResult HistAvaliacoes(int? id)
+        public ActionResult HistAvaliacoes()
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Pais.Where(w => w.UserID == UserId).Select(s => s.PaisID).FirstOrDefault();
             return View(_db.Avaliacoes.Where(w => w.Pais.PaisID == id).OrderByDescending(ob => ob.Data).ToList());
         }
-        [AllowAnonymous]
-        public ActionResult Pesquisa()
+         public ActionResult Pesquisa()
         {
 
             ViewBag.Servicos = new SelectList(_db.Servicos.ToList(), "ServicosID", "Descricao");
@@ -430,8 +429,7 @@ namespace tp_escolas.Controllers
             }
             return View(inst);
         }
-
-        [AllowAnonymous]
+         
         [HttpPost]
         public PartialViewResult Pesquisa(List<int> id, List<int> serv, List<int> Tensi, List<string> Tesco)
         {

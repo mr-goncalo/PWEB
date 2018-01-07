@@ -25,13 +25,7 @@ namespace tp_escolas.Models
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<TipoEnsino> TipoEnsino { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Actividade>() 
-                .HasRequired(hr => hr.Instituicao)
-                .WithMany() 
-                .WillCascadeOnDelete(true);
-        }
+        
 
     }
 }

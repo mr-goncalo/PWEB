@@ -7,13 +7,13 @@ namespace tp_escolas.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class finalV2 : IMigrationMetadata
+    public sealed partial class creat : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(finalV2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(creat));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801050517320_finalV2"; }
+            get { return "201801070559409_creat"; }
         }
         
         string IMigrationMetadata.Source

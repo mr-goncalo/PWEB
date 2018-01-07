@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using tp_escolas.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,23 +16,52 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <div class="navbar navbar-expand-lg navbar-dark bg-primary" style="    width: inherit;">
+                <button type="button" class="navbar-toggle btn btn-warning" data-toggle="collapse" data-target=".navbar-collapse" style="margin: .3em;">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+                @Html.ActionLink("Space4Children", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Lista Instituições", "ListaInstituicoes", "Instituicao", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("About us", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.Partial("_LoginPartial")
+            </div>
+           
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="position: absolute;" >
+                    @if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Admin))
+                    {
+                        <li style="margin-top:2px;">@Html.ActionLink("Admin Home", "Index", "Admin", null, new { @class = "btn btn-warning"})</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Servicos", "ServicoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Tipo Ensino", "TipoEnsinoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Pais", "PaisEditDel", "Admin", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Instituições", "InstituicaoEditDel", null, "Admin", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão Admins", "AdminAddDel", "Admin", null, new { @class = "btn btn-warning" })</li>
+
+                    }@if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Pai))
+                    {
+                        <li style="margin-top:2px;">@Html.ActionLink("Pais Home", "Index", "Pais", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Avaliação", "Avaliacao", "Pais", null, new {@class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Historico Avaliações", "HistAvaliacoes", null, "Pais", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Lista Actividades das escolas", "LstActividades", null, "Pais", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Pedir Informações", "LstIns", "Pais", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Editar Dados", "Edit", "Pais", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Pesquisar", "Pesquisar", "Pais", null, new { @class = "btn btn-warning" })</li>
+
+                    }@if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Instituicao))
+                    {
+                        <li style="margin-top:2px;">@Html.ActionLink("Instituicao Home", "Index", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Adicionar / Editar Serviços Especificos", "ServicosLista", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Aceitar Pais", "ListaPais", null, "Instituicao", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Criar Actividade", "LstActividades", null, "Instituicao", new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Ver Actividades", "LstIns", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Edit", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+ 
+                    }
+                    
+                </ul> 
             </div>
         </div>
     </div>
@@ -39,7 +69,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Space4Children ISEC</p>
         </footer>
     </div>
 

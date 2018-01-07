@@ -28,7 +28,7 @@ namespace tp_escolas.Helpers
             {
                 var roleresult = roleManager.Create(new IdentityRole(RolesConst.Instituicao));
             }
-            string userName = "admina@dmin.com";
+            string userName = "admin@admin.com";
             string password = "12345Asd!";
             ApplicationUser user = userManager.FindByName(userName);
             if (user == null)

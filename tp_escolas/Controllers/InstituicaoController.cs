@@ -166,7 +166,7 @@ namespace tp_escolas.Controllers
         {
             try
             {
-                inst.Cidades = _db.Cidades.ToList();
+                ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
 
                 if (_UserDb.Users.Any(y => y.Email == inst.Email))
                 {
@@ -284,11 +284,10 @@ namespace tp_escolas.Controllers
         }
 
         // GET: Instituicao/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit( )
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
-
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
             Instituicao inst = new Instituicao();
             InstituicaoViewModelEdit IVm = new InstituicaoViewModelEdit();
             inst = _db.Instituicoes.Where(x => x.InstituicaoID == id).FirstOrDefault();
@@ -437,10 +436,10 @@ namespace tp_escolas.Controllers
             }
         }
 
-        public ActionResult ServicosLista(int? id)
+        public ActionResult ServicosLista()
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
 
             InstituicaoViewModelEdit IVm = new InstituicaoViewModelEdit();
 
@@ -533,10 +532,10 @@ namespace tp_escolas.Controllers
             }
         }
 
-        public ActionResult ListaPais(int? idIns, int? idPai)
+        public ActionResult ListaPais(int? idPai)
         {
-            if (idIns == null || idIns <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var idIns = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
 
             ViewBag.IdIns = idIns;
 
@@ -591,12 +590,12 @@ namespace tp_escolas.Controllers
                 return View();
             }
         }
-        public ActionResult ListaAct(int? id)
+        public ActionResult ListaAct( )
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
 
-            return View(_db.Actividades.Where(w => w.DataTermino >= DateTime.Now).ToList());
+            return View(_db.Actividades.Where(w => w.Instituicao.InstituicaoID == id && w.DataTermino >= DateTime.Now).ToList());
         }
         public ActionResult ActividadeEdit(int? id)
         {
@@ -661,11 +660,11 @@ namespace tp_escolas.Controllers
             
         }
 
-        public ActionResult Avaliacoes(int? id)
+        public ActionResult Avaliacoes( )
         {
-            if (id == null || id <= 0)
-                return RedirectToAction("Index");
-             return View(_db.Avaliacoes.Where(w => w.InstituicoesID == id).ToList());
+            var UserId = User.Identity.GetUserId();
+            var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
+            return View(_db.Avaliacoes.Where(w => w.InstituicoesID == id).ToList());
         }
     }
 

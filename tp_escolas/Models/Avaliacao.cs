@@ -13,7 +13,7 @@ namespace tp_escolas.Models
        
         [Key, Column(Order = 1), ForeignKey("Pais")]
         public int PaisID { get; set; }
-        [Key, Column(Order = 2), ForeignKey("Instituicoes")]
+        [Key, Column(Order = 2), ForeignKey("Instituicoes")] 
         public int InstituicoesID { get; set; }
 
 

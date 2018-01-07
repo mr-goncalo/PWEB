@@ -3,6 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Lista Instituicoes</h2>
+<p>
+    @Html.ActionLink("Voltar", null, null, null, new { href = Request.UrlReferrer }) 
+</p>
 <div>
 
    Escolha uma Cidade: @Html.DropDownList("Cidade", (SelectList)ViewBag.Cidades , "Todas As cidades", new { id = "Mydrop" })
