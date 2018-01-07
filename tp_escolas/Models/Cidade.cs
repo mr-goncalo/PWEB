@@ -14,6 +14,7 @@ namespace tp_escolas.Models
     {
         [Key]
         public int CidadeID { get; set; }
+        [Display(Name  = "Cidade")]
         public string CidadeNome { get; set; }
          
     }

@@ -840,5 +840,78 @@ namespace tp_escolas.Controllers
             return RedirectToAction("AdminAddDel");
         }
 
+        public ActionResult CidadesAddEdit()
+        {
+            return View(_db.Cidades.ToList());
+        }
+        public ActionResult CidadeEdit(int? id)
+        {
+            if (id == null || id <= 0)
+                return RedirectToAction("CidadesAddEdit");
+            return View(_db.Cidades.Find(id));
+        }
+        [HttpPost]
+        public ActionResult CidadeEdit(Cidade cid)
+        {
+            try
+            { 
+                if (cid.CidadeNome.TrimStart() == "" || cid.CidadeNome == null)
+                    ModelState.AddModelError("Descricao", "Por favor insira uma descrição");
+                if (ModelState.IsValid)
+                {
+                    var c = _db.Cidades.Find(cid.CidadeID);
+                    c.CidadeNome = cid.CidadeNome;
+                    _db.SaveChanges();
+                    return RedirectToAction("CidadesAddEdit");
+                }
+            }
+            catch
+            {
+
+            }
+            return RedirectToAction("CidadesAddEdit");
+        }
+        public ActionResult CidadeDel(int? id)
+        {
+            try
+            {
+                if (id == null || id <= 0)
+                    return RedirectToAction("CidadesAddEdit");
+                _db.Cidades.Remove(_db.Cidades.Find(id));
+                _db.SaveChanges();
+            }
+            catch
+            {
+
+            }
+            return RedirectToAction("CidadesAddEdit");
+        }
+        public ActionResult CidadeAdd()
+        {
+            return View();
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost]
+        public ActionResult CidadeAdd(Cidade c)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                if (c.CidadeNome.TrimStart() == "" || c.CidadeNome == null)
+                    ModelState.AddModelError("Descricao", "Por favor insira uma descrição");
+                if (ModelState.IsValid)
+                {
+                    _db.Cidades.Add(c);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-     @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
@@ -27,23 +27,23 @@
                 @Html.ActionLink("About us", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.Partial("_LoginPartial")
             </div>
-           
+
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="position: absolute;z-index:1000" >
+                <ul class="nav navbar-nav" style="position: absolute;z-index:1000">
                     @if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Admin))
                     {
-                        <li style="margin-top:2px;">@Html.ActionLink("Admin Home", "Index", "Admin", null, new { @class = "btn btn-warning"})</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Admin Home", "Index", "Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Aceitar Instituição", "Aceitar", "Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Servicos", "ServicoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Tipo Ensino", "TipoEnsinoDelEdit", null, "Admin", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Pais", "PaisEditDel", "Admin", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Instituições", "InstituicaoEditDel", null, "Admin", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Gestão Admins", "AdminAddDel", "Admin", null, new { @class = "btn btn-warning" })</li>
-
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão De Cidades", "CidadesAddEdit", "Admin", null, new { @class = "btn btn-warning" })</li>
                     }@if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Pai))
                     {
                         <li style="margin-top:2px;">@Html.ActionLink("Pais Home", "Index", "Pais", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Avaliação", "Avaliacao", "Pais", null, new {@class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Avaliação", "Avaliacao", "Pais", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Historico Avaliações", "HistAvaliacoes", null, "Pais", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Lista Actividades das escolas", "LstActividades", null, "Pais", new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Pedir Informações", "LstIns", "Pais", null, new { @class = "btn btn-warning" })</li>
@@ -55,12 +55,12 @@
                         <li style="margin-top:2px;">@Html.ActionLink("Instituicao Home", "Index", "Instituicao", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Adicionar / Editar Serviços Especificos", "ServicosLista", "Instituicao", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Aceitar Pais", "ListaPais", "Instituicao", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Gestão de Actividades", "ListaAct",  "Instituicao", null, new { @class = "btn btn-warning" })</li>
-                         <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Avaliacoes", "Instituicao", null, new { @class = "btn btn-warning" })</li>
- 
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão de Actividades", "ListaAct", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Avaliacoes", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+
                     }
-                    
-                </ul> 
+
+                </ul>
             </div>
         </div>
     </div>

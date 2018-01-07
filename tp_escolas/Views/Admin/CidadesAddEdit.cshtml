@@ -1,0 +1,33 @@
+﻿@model IEnumerable<tp_escolas.Models.Cidade>
+@{
+    ViewBag.Title = "Gestão De Cidades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
+<p>
+    @Html.ActionLink("Nova", "CidadeAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CidadeNome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CidadeNome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "CidadeEdit", new { id=item.CidadeID }) | 
+            @Html.ActionLink("Apagar", "CidadeDel", new { id=item.CidadeID },
+           new { onclick = "return confirm('Deseja mesmo Apagar?');" })
+        </td>
+    </tr>
+}
+
+</table>
