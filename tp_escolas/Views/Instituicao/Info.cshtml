@@ -10,6 +10,11 @@
 <div>
     <h4>Instituicao</h4>
     <hr />
+    <p>
+    @Html.ActionLink("Voltar", null, null, null, new { href = Request.UrlReferrer })
+
+
+</p>
     <dl class="dl-horizontal">
 
         <dt>
@@ -77,6 +82,4 @@
     </dl>
 
 </div>
-<p>
-    @Html.ActionLink("Voltar a lista", "ListaInstituicoes")
-</p>
+

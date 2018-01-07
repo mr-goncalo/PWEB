@@ -281,6 +281,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -360,6 +362,9 @@
     <Content Include="Views\Admin\PaiAdd.cshtml" />
     <Content Include="Views\Admin\AdminAddDel.cshtml" />
     <Content Include="Views\Admin\AdminAdd.cshtml" />
+    <Content Include="Views\Instituicao\_ListaInstPartial.cshtml" />
+    <Content Include="Views\Pais\Pesquisa.cshtml" />
+    <Content Include="Views\Pais\_Pesquisa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

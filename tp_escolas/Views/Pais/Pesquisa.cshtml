@@ -1,0 +1,109 @@
+﻿@model IEnumerable<tp_escolas.Models.Instituicao>
+
+@{
+    ViewBag.Title = "Pesquisa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pesquisa</h2>
+<div>
+
+    <table cellpadding="10">
+        <tr>
+            <td>Escolha uma Cidade: @Html.DropDownList("Cidade", (SelectList)ViewBag.Cidades, "Todas As cidades", new { id = "Mydrop" })</td>
+            <td>
+                <div id="Serv" style="max-height:200px;overflow:scroll">
+                    <table>
+                        @foreach (var it in (SelectList)ViewBag.Servicos)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBox("c", htmlAttributes: new { @value = (string)it.Value } )
+                                </td>
+                                <td>
+                                    @Html.Label((string)it.Text)
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div id="Ensi" style="max-height:200px;overflow:scroll">
+                    <table>
+                        @foreach (var it in (SelectList)ViewBag.TiposEnsino)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBox("c", htmlAttributes: new { @value = (string)it.Value })
+                                </td>
+                                <td>
+                                    @Html.Label((string)@it.Text)
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </td>
+            <td>
+            <td>Escolha um  Tipo de Instituicao: @Html.DropDownList("Tipo Instituicao", (SelectList)ViewBag.Inst, "Todas", new { id = "Inst" })</td>
+              
+        </tr>
+    </table>
+</div>
+<div id="divPartialView">
+    @Html.Partial("_Pesquisa", Model)
+</div>
+<script>
+    $(document).ready(function () {
+
+      
+        $("#Serv").contents().find(":checkbox").bind('change', function () {
+            pesquisa();
+        });
+        $("#Ensi").contents().find(":checkbox").bind('change', function () {
+            pesquisa();
+        });
+      
+        $("#Mydrop").change(function (event) { 
+             pesquisa( );  
+        });
+        $("#Inst").change(function (event) { 
+            pesquisa(); 
+        });
+         
+
+        function pesquisa() {
+            var servicos = [];
+            var tensi = []; 
+
+            $('#Serv input:checked').each(function () {
+                servicos.push($(this).attr("value"));
+            });
+
+            $('#Ensi input:checked').each(function () {
+                tensi.push($(this).attr("value"));
+            });
+  
+            var id = $("#Mydrop").val();
+            if (id === "")
+                id = 0;
+            var tesco = $("#Inst").val();
+            if (tesco === "")
+                tesco = null;
+
+            $.ajax({
+                data: JSON.stringify({ id: id, serv: servicos, Tensi: tensi, Tesco: tesco }),
+                cache: false,
+                method: "POST",
+                dataType: 'html', contentType: 'application/json;'
+            }).done(function (result) {
+                $("#divPartialView").html(result);
+            });
+        }
+             
+        
+    });
+</script>

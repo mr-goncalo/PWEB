@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using tp_escolas.Models;
 using tp_escolas.Models.ViewModels;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq.Expressions;
 
 namespace tp_escolas.Controllers
 {
@@ -398,9 +399,81 @@ namespace tp_escolas.Controllers
 
         public ActionResult HistAvaliacoes(int? id)
         {
-           if (id == null || id <= 0)
+            if (id == null || id <= 0)
                 return RedirectToAction("Index");
-            return View(_db.Avaliacoes.Where(w => w.Pais.PaisID == id).OrderByDescending(ob => ob.Data ).ToList());
+            return View(_db.Avaliacoes.Where(w => w.Pais.PaisID == id).OrderByDescending(ob => ob.Data).ToList());
+        }
+        [AllowAnonymous]
+        public ActionResult Pesquisa()
+        {
+
+            ViewBag.Servicos = new SelectList(_db.Servicos.ToList(), "ServicosID", "Descricao");
+            ViewBag.Cidades = new SelectList(_db.Cidades.ToList(), "CidadeID", "CidadeNome");
+            ViewBag.TiposEnsino = new SelectList(_db.TipoEnsino.ToList(), "TipoEnsinoID", "Descricao");
+            var ti = new SelectList(
+    new List<SelectListItem>
+    {
+        new SelectListItem { Selected = false, Text = TipoInstituicao.IPSS.ToString(), Value = TipoInstituicao.IPSS.ToString()},
+        new SelectListItem { Selected = false, Text = TipoInstituicao.PRIVADA.ToString(), Value = TipoInstituicao.PRIVADA.ToString() },
+        new SelectListItem { Selected = false, Text = TipoInstituicao.PUBLICA.ToString(), Value = TipoInstituicao.PUBLICA.ToString()},
+    }, "Value", "Text", 1);
+
+            ViewBag.Inst = ti;
+            var inst = _db.Instituicoes.ToList();
+            foreach (var it in inst)
+            {
+                foreach (var item in it.Avaliacoes)
+                {
+                    it.NotaAvg += item.Nota;
+                }
+                it.NotaAvg = it.NotaAvg / it.Avaliacoes.Count;
+            }
+            return View(inst);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public PartialViewResult Pesquisa(List<int> id, List<int> serv, List<int> Tensi, List<string> Tesco)
+        {
+
+            var inst = _db.Instituicoes.ToList();
+            if (id.Count > 0 && id[0] >0)
+                inst = inst.Where(w => w.Cidade.CidadeID == id[0]).ToList();
+            if (serv != null && serv.Count > 0)
+            {
+                foreach (var it in serv)
+                {
+                    inst = inst.Where(w => w.InstituicoesServicos.Any(s => s.ServicosID == it)).ToList();
+                }
+            }
+
+            if (Tensi != null && Tensi.Count > 0)
+            {
+                foreach (var it in Tensi)
+                {
+                    inst = inst.Where(w => w.InstituicoesTipoEnsino.Any(a=> a.TipoEnsinoID == it)).ToList();
+                }
+            }
+
+            if (Tesco.Count > 0 && !Tesco[0].Equals(""))
+            {
+                foreach (var it in Tesco)
+                {
+                    inst = inst.Where(w => w.TipoInstituicao.ToString() == it).ToList();
+                }
+            }
+
+            foreach (var it in inst)
+            {
+                foreach (var item in it.Avaliacoes)
+                {
+                    it.NotaAvg += item.Nota;
+                }
+                it.NotaAvg = it.NotaAvg / it.Avaliacoes.Count;
+            }
+
+
+            return PartialView("_Pesquisa", inst);
         }
     }
 }

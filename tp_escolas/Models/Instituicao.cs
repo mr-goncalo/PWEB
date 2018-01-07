@@ -47,6 +47,9 @@ namespace tp_escolas.Models
         [Required]
         public TipoInstituicao TipoInstituicao { get; set; }
 
+        [NotMapped]
+        [ScaffoldColumn(false)]
+        public double NotaAvg { get; set; }
 
         virtual public IList<Actividade> Actividades { get; set; }
         virtual public IList<InstituicaoServico> InstituicoesServicos { get; set; }

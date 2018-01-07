@@ -1,49 +1,36 @@
 ﻿@model IEnumerable<tp_escolas.Models.Instituicao>
 @{
-    ViewBag.Title = "ListaInstituicoes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Lista Instituicoes</h2>
+<div>
 
-<h2>ListaInstituicoes</h2>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Morada)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoInstituicao)
-        </th>
-        <th></th>
-    </tr>
+   Escolha uma Cidade: @Html.DropDownList("Cidade", (SelectList)ViewBag.Cidades , "Todas As cidades", new { id = "Mydrop" })
 
-    @foreach (var item in Model)
-    {
-     if (item.Activa)
-     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Morada)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoInstituicao)
-            </td>
-            <td>
-                @Html.ActionLink("Mais Informacoes", "info", new { id = item.InstituicaoID })
-            </td>
-        </tr>
-         }
-     }
 
-</table>
+
+</div>
+<div id="divPartialView">
+
+    @Html.Partial("_ListaInstPartial", Model)
+</div>
+<script>
+    $(document).ready(function () {
+
+        $("#Mydrop").change(function (event) {
+     $.ajax({
+         data: { id : $(this).val()  },
+        cache: false,
+        type: "POST",
+        dataType: "html",
+        success: function (data, textStatus, XMLHttpRequest) {
+            SetData(data);
+        }
+    });
+        });
+        function SetData(data) {
+            $("#divPartialView").html(data); // HTML DOM replace
+        }
+});
+</script>
+

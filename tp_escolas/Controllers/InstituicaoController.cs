@@ -73,10 +73,12 @@ namespace tp_escolas.Controllers
         {
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
+
+            ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
+
             InstituicaoViewModelAdd i = new InstituicaoViewModelAdd
             {
-                Servicos = _db.Servicos.ToList(),
-                Cidades = _db.Cidades.ToList(),
+                Servicos = _db.Servicos.ToList(), 
                 TiposEnsino = _db.TipoEnsino.ToList()
             };
 
@@ -121,11 +123,39 @@ namespace tp_escolas.Controllers
             return View(inst);
         }
 
-   
         [AllowAnonymous]
-        public ActionResult ListaInstituicoes()
+        public ActionResult ListaInstituicoes( )
         {
-            return View(_db.Instituicoes.ToList());
+
+            ViewBag.Cidades = ViewBag.CidadeID = new SelectList(_db.Cidades, "CidadeID", "CidadeNome");
+            var inst = _db.Instituicoes.ToList();
+            foreach(var it in inst)
+            {
+               foreach(var item in it.Avaliacoes)
+                {
+                    it.NotaAvg += item.Nota;
+                }
+                it.NotaAvg = it.NotaAvg / it.Avaliacoes.Count;
+            }
+            return View(inst);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public PartialViewResult ListaInstituicoes(int? id)
+        {
+            var inst = _db.Instituicoes.ToList();
+            if (id > 0)
+                inst = inst.Where(w => w.Cidade.CidadeID == id).ToList();
+            foreach (var it in inst)
+            {
+                foreach (var item in it.Avaliacoes)
+                {
+                    it.NotaAvg += item.Nota;
+                }
+                it.NotaAvg = it.NotaAvg / it.Avaliacoes.Count;
+            }
+            return PartialView("_ListaInstPartial", inst);
         }
 
         // POST: Instituicao/Registo
