@@ -140,3 +140,4 @@ C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escol
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.creat.resources
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.csproj.GenerateResource.Cache
 C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.asd.resources
+C:\Users\eu\Documents\Visual Studio 2017\PWEB\PWEB\tp_escolas\obj\Debug\tp_escolas.Migrations.ff.resources

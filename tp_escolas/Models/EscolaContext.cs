@@ -26,12 +26,6 @@ namespace tp_escolas.Models
         public DbSet<TipoEnsino> TipoEnsino { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Avaliacao>()
-            .HasOptional(c => c.Instituicoes)
-            .WithOptionalDependent()
-            .WillCascadeOnDelete(true);
-        }
+      
     }
 }

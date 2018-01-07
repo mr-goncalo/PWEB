@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201801070936002_asd.Designer.cs">
       <DependentUpon>201801070936002_asd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801071009341_ff.cs" />
+    <Compile Include="Migrations\201801071009341_ff.Designer.cs">
+      <DependentUpon>201801071009341_ff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Actividade.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801070936002_asd.resx">
       <DependentUpon>201801070936002_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801071009341_ff.resx">
+      <DependentUpon>201801071009341_ff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
