@@ -11,6 +11,7 @@ using tp_escolas.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using tp_escolas.Models.ViewModels;
 using System.Globalization;
+using System.Data.Entity;
 
 namespace tp_escolas.Controllers
 {
@@ -569,10 +570,10 @@ namespace tp_escolas.Controllers
         {
             try
             {
-                if (act.DataInicio < DateTime.Now)
-                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser maior que a Data de hoje!");
-                if (act.DataInicio > act.DataTermino)
-                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser menor que a Data de Termino!");
+                if (act.DataInicio.Date < DateTime.Now.Date)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser maior ou igual que a Data de hoje!");
+                if (act.DataInicio.Date > act.DataTermino.Date)
+                    ModelState.AddModelError("DataInicio", "A data de inico tem de ser menor ou igual que a Data de Termino!");
 
                 if (ModelState.IsValid)
                 {
@@ -594,8 +595,8 @@ namespace tp_escolas.Controllers
         {
             var UserId = User.Identity.GetUserId();
             var id = _db.Instituicoes.Where(w => w.UserID == UserId).Select(s => s.InstituicaoID).FirstOrDefault();
-
-            return View(_db.Actividades.Where(w => w.Instituicao.InstituicaoID == id && w.DataTermino >= DateTime.Now).ToList());
+            var DataHoje = DateTime.Now.Date;
+            return View(_db.Actividades.Where(w => w.Instituicao.InstituicaoID == id && DbFunctions.TruncateTime(w.DataTermino) >= DataHoje).ToList());
         }
         public ActionResult ActividadeEdit(int? id)
         {
@@ -611,9 +612,9 @@ namespace tp_escolas.Controllers
 
             try
             {
-                if (act.DataInicio < DateTime.Now)
+                if (act.DataInicio.Date < DateTime.Now.Date)
                     ModelState.AddModelError("DataInicio", "A data de inico tem de ser maior que a Data de hoje!");
-                if (act.DataInicio > act.DataTermino)
+                if (act.DataInicio.Date > act.DataTermino.Date)
                     ModelState.AddModelError("DataInicio", "A data de inico tem de ser menor que a Data de Termino!");
 
                 if (ModelState.IsValid)

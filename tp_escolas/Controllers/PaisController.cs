@@ -11,6 +11,7 @@ using tp_escolas.Models;
 using tp_escolas.Models.ViewModels;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace tp_escolas.Controllers
 {
@@ -325,10 +326,12 @@ namespace tp_escolas.Controllers
         void ListaInst(int id)
         {
             var anoP = DateTime.Now.AddYears(-1);
+            var DataHoje = DateTime.Now.Date;
+
             // vai buscar todas as instituicoes que ja acabaram o ano lectivo
             var finalAno = _db.Actividades.Where(w => w.Descricao.ToLower().Equals("ano lectivo")
                             && w.DataInicio.Year == anoP.Year
-                            && w.DataTermino <= DateTime.Now).ToList();
+                            && DbFunctions.TruncateTime(w.DataTermino) <= DataHoje).ToList();
 
             var Avaliacoes = _db.Avaliacoes.Where(w => w.Data.Year == DateTime.Now.Year && w.PaisID == id).ToList();
 

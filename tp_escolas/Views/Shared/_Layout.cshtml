@@ -29,7 +29,7 @@
             </div>
            
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="position: absolute;" >
+                <ul class="nav navbar-nav" style="position: absolute;z-index:1000" >
                     @if (User.Identity.IsAuthenticated && User.IsInRole(RolesConst.Admin))
                     {
                         <li style="margin-top:2px;">@Html.ActionLink("Admin Home", "Index", "Admin", null, new { @class = "btn btn-warning"})</li>
@@ -54,10 +54,9 @@
                     {
                         <li style="margin-top:2px;">@Html.ActionLink("Instituicao Home", "Index", "Instituicao", null, new { @class = "btn btn-warning" })</li>
                         <li style="margin-top:2px;">@Html.ActionLink("Adicionar / Editar Serviços Especificos", "ServicosLista", "Instituicao", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Aceitar Pais", "ListaPais", null, "Instituicao", new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Criar Actividade", "LstActividades", null, "Instituicao", new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Ver Actividades", "LstIns", "Instituicao", null, new { @class = "btn btn-warning" })</li>
-                        <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Edit", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Aceitar Pais", "ListaPais", "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                        <li style="margin-top:2px;">@Html.ActionLink("Gestão de Actividades", "ListaAct",  "Instituicao", null, new { @class = "btn btn-warning" })</li>
+                         <li style="margin-top:2px;">@Html.ActionLink("Vizualizar Avaliação", "Avaliacoes", "Instituicao", null, new { @class = "btn btn-warning" })</li>
  
                     }
                     
